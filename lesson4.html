@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Занятие 4 — Google Таблицы</title>
+
+  <!-- RevealJS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+
+  <style>
+    :root {
+      --accent: #E65100;
+      --r-heading-color: #1a1a1a;
+      --r-main-font: 'Segoe UI', Arial, sans-serif;
+      --r-heading-font: 'Segoe UI', Arial, sans-serif;
+      --r-link-color: #E65100;
+    }
+
+    .reveal h1 { font-size: 2em; color: var(--accent); }
+    .reveal h2 { font-size: 1.5em; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
+    .reveal h3 { font-size: 1.1em; color: #444; }
+    .reveal p, .reveal li { font-size: 0.85em; line-height: 1.6; }
+    .reveal pre { font-size: 0.7em; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+    .reveal table { font-size: 0.75em; border-collapse: collapse; width: 100%; }
+    .reveal table th { background: var(--accent); color: white; padding: 8px 12px; }
+    .reveal table td { padding: 6px 12px; border: 1px solid #ddd; }
+    .reveal table tr:nth-child(even) td { background: #f9f9f9; }
+    .reveal .note {
+      background: #FFF8E1; border-left: 4px solid #FFC107;
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .tip {
+      background: #E8F5E9; border-left: 4px solid var(--accent);
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .warn {
+      background: #FFEBEE; border-left: 4px solid #E53935;
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .slide-img {
+      max-width: 85%; max-height: 340px;
+      border: 1px solid #ddd; border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .reveal .img-caption {
+      font-size: 0.55em; color: #888; margin-top: 4px;
+      font-style: italic;
+    }
+    .reveal .title-slide h1 { font-size: 2.2em; }
+    .reveal .title-slide .subtitle { color: #666; font-size: 0.9em; }
+    .reveal .title-slide .meta {
+      font-size: 0.65em; color: #999; margin-top: 32px;
+      border-top: 1px solid #eee; padding-top: 12px;
+    }
+    .reveal .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left;
+    }
+    .reveal .badge {
+      display: inline-block; background: var(--accent); color: white;
+      padding: 2px 10px; border-radius: 12px; font-size: 0.6em;
+      vertical-align: middle; margin-left: 6px;
+    }
+    .reveal .progress-bar {
+      display: flex; gap: 8px; justify-content: center;
+      margin: 20px 0; flex-wrap: wrap;
+    }
+    .reveal .progress-step {
+      padding: 4px 14px; border-radius: 20px; font-size: 0.6em;
+      border: 2px solid var(--accent); color: var(--accent);
+    }
+    .reveal .progress-step.done {
+      background: var(--accent); color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="title-slide" data-background-color="#E65100">
+      <h1 style="color:white">📊 Google Таблицы</h1>
+      <p class="subtitle" style="color:rgba(255,255,255,.8)">Занятие 4 из 4</p>
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">
+        AI в Google Таблицах · Макросы · Apps Script
+      </h2>
+    </section>
+
+    <section>
+      <h2>Программа занятия</h2>
+      <div class="progress-bar">
+        <span class="progress-step done">1. Gemini — AI-панель</span>
+        <span class="progress-step done">2. AI для формул</span>
+        <span class="progress-step done">3. Запись макросов</span>
+        <span class="progress-step done">4. Apps Script</span>
+        <span class="progress-step done">5. Триггеры</span>
+        <span class="progress-step done">6. Задание со скриптом</span>
+      </div>
+      <div class="tip">💡 После всех 4 занятий — Итоговый тест (Блок 1 + Блок 2)</div>
+    </section>
+
+    <!-- AI -->
+    <section>
+      <section>
+        <h2>Тема 1: AI в Google Таблицах</h2>
+        <h3>Что доступно</h3>
+        <ul>
+          <li>Боковая панель <strong>Gemini</strong> — AI-ассистент</li>
+          <li>Автодополнение при вводе формул</li>
+          <li>Функция <code>=AI()</code> в некоторых планах Workspace</li>
+        </ul>
+        <div class="note" style="margin-top:20px">
+          📌 Открыть: иконка Gemini в правом верхнем углу
+        </div>
+      </section>
+
+      <section>
+        <h3>Что умеет Gemini</h3>
+        <table>
+          <tr><th>Задача</th><th>Пример запроса</th></tr>
+          <tr><td>Создать таблицу</td><td>«Создай таблицу для учёта расходов по категориям»</td></tr>
+          <tr><td>Написать формулу</td><td>«Напиши формулу: сумма продаж только за март»</td></tr>
+          <tr><td>Построить диаграмму</td><td>«Построй диаграмму продаж по менеджерам»</td></tr>
+          <tr><td>Анализ данных</td><td>«Что можно сказать об этих данных продаж?»</td></tr>
+        </table>
+        <div class="warn" style="margin-top:12px">
+          ⚠️ AI — ускоритель, не замена пониманию.<br>
+          Всегда проверяйте результат и понимайте, что делает формула.
+        </div>
+      </section>
+
+      <section>
+        <h3>AI для написания формул</h3>
+        <p style="font-size:0.8em">Вместо запоминания синтакса — опишите задачу словами:</p>
+        <div class="note" style="text-align:left">
+          «Мне нужна формула, которая ищет имя сотрудника в столбце A, и если находит — возвращает его зарплату из столбца C, а если не находит — показывает "Не найдено"»
+        </div>
+        <div class="tip" style="margin-top:16px">
+          💡 Три сценария использования внешнего AI:<br>
+          1. Написать формулу → скопировать → адаптировать ссылки<br>
+          2. Очистить данные → вставить результат<br>
+          3. Придумать структуру таблицы под задачу
+        </div>
+      </section>
+    </section>
+
+    <!-- МАКРОСЫ -->
+    <section>
+      <section>
+        <h2>Тема 2: Макросы</h2>
+        <p>Макрос — записанная последовательность действий, которую можно запустить повторно.</p>
+        <div class="tip">
+          💡 Если каждую пятницу вы делаете одно и то же —<br>запишите это один раз и запускайте кнопкой.
+        </div>
+        <h3 style="margin-top:24px">Два способа создания</h3>
+        <div class="two-col">
+          <div class="note">📹 <strong>Запись макроса</strong><br>Без кода, для начинающих</div>
+          <div class="tip">💻 <strong>Apps Script</strong><br>JavaScript — для тех, кто хочет большего</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Запись макроса — пошагово</h3>
+        <ol style="font-size:0.85em;text-align:left;max-width:700px;margin:0 auto">
+          <li><strong>Расширения → Макросы → Записать макрос</strong></li>
+          <li>Выберите тип ссылок: абсолютные или относительные</li>
+          <li>Выполняйте нужные действия в таблице</li>
+          <li>Нажмите <strong>«Сохранить»</strong>, дайте имя</li>
+          <li>Готово — запуск через <strong>Расширения → Макросы → [имя]</strong></li>
+        </ol>
+        <div class="note" style="margin-top:20px">
+          💡 Можно назначить горячую клавишу: <strong>Ctrl+Alt+Shift+[цифра]</strong>
+        </div>
+      </section>
+
+      <section>
+        <h3>Apps Script — примеры кода</h3>
+        <pre><code class="language-javascript">// Покрасить ячейку A1 в зелёный
+function formatHeader() {
+  var sheet = SpreadsheetApp
+    .getActiveSpreadsheet()
+    .getActiveSheet();
+
+  var cell = sheet.getRange("A1");
+  cell.setBackground("#0F9D58");
+  cell.setFontColor("white");
+  cell.setFontWeight("bold");
+}</code></pre>
+      </section>
+
+      <section>
+        <h3>Кнопка на листе → запуск макроса</h3>
+        <ol style="font-size:0.85em;text-align:left;max-width:700px;margin:0 auto">
+          <li><strong>Вставка → Рисунок</strong> → нарисуйте прямоугольник с текстом «Запустить»</li>
+          <li>Вставьте рисунок</li>
+          <li>Кликните на него → три точки → <strong>«Назначить скрипт»</strong></li>
+          <li>Введите имя функции</li>
+        </ol>
+        <div class="tip" style="margin-top:20px">
+          💡 Что можно автоматизировать:<br>
+          форматирование отчётов · очистка данных · генерация шаблонов · отправка email
+        </div>
+      </section>
+
+      <section>
+        <h3>Триггеры — автозапуск</h3>
+        <p>Скрипт можно запускать без нажатия кнопки.</p>
+        <p style="font-size:0.8em;color:#888">Apps Script → Триггеры (иконка часов слева)</p>
+        <table style="margin-top:16px">
+          <tr><th>Событие</th><th>Когда запускается</th></tr>
+          <tr><td>При открытии файла</td><td>Каждый раз при открытии</td></tr>
+          <tr><td>При редактировании</td><td>При любом изменении ячейки</td></tr>
+          <tr><td>По расписанию</td><td>Каждый час / день / неделю</td></tr>
+        </table>
+      </section>
+    </section>
+
+    <!-- ПРАКТИКА -->
+    <section>
+      <h2>Практические задания</h2>
+      <div class="two-col">
+        <div>
+          <h3>Задание 1 — Gemini</h3>
+          <ol style="font-size:0.75em">
+            <li>Откройте боковую панель Gemini</li>
+            <li>Попросите написать формулу для реальной задачи</li>
+            <li>Примените и проверьте результат</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Задание 2 — Макрос</h3>
+          <ol style="font-size:0.75em">
+            <li>Запишите макрос: жирная первая строка + синяя заливка + автоподбор ширины</li>
+            <li>Создайте кнопку на листе</li>
+            <li>Привяжите макрос к кнопке</li>
+          </ol>
+        </div>
+      </div>
+      <div class="note" style="margin-top:24px">
+        ⭐ <strong>Необязательное задание:</strong> Напишите скрипт с помощью AI — опишите задачу в ChatGPT или Gemini, скопируйте код, запустите, объясните что делает каждая строка.
+      </div>
+    </section>
+
+    <section data-background-color="#E65100">
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">Курс завершён! 🎉</h2>
+      <p style="color:rgba(255,255,255,.9);font-size:1.1em">Следующий шаг: <strong>Итоговый тест</strong></p>
+      <div style="margin-top:32px;display:flex;gap:32px;justify-content:center">
+        <div style="background:rgba(255,255,255,.15);border-radius:12px;padding:16px 24px;color:white;font-size:0.8em">
+          <div style="font-size:1.6em;margin-bottom:8px">📋</div>
+          <strong>Блок 1</strong><br>Базовый уровень<br>60 баллов
+        </div>
+        <div style="background:rgba(255,255,255,.15);border-radius:12px;padding:16px 24px;color:white;font-size:0.8em">
+          <div style="font-size:1.6em;margin-bottom:8px">🚀</div>
+          <strong>Блок 2</strong><br>Продвинутый уровень<br>40 доп. баллов
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    plugins: [RevealHighlight, RevealNotes],
+    width: 1200,
+    height: 700,
+    margin: 0.06,
+  });
+</script>
+</body>
+</html>

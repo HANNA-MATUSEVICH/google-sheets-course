@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Занятие 3 — Google Таблицы</title>
+
+  <!-- RevealJS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+
+  <style>
+    :root {
+      --accent: #9C27B0;
+      --r-heading-color: #1a1a1a;
+      --r-main-font: 'Segoe UI', Arial, sans-serif;
+      --r-heading-font: 'Segoe UI', Arial, sans-serif;
+      --r-link-color: #9C27B0;
+    }
+
+    .reveal h1 { font-size: 2em; color: var(--accent); }
+    .reveal h2 { font-size: 1.5em; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
+    .reveal h3 { font-size: 1.1em; color: #444; }
+    .reveal p, .reveal li { font-size: 0.85em; line-height: 1.6; }
+    .reveal pre { font-size: 0.7em; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+    .reveal table { font-size: 0.75em; border-collapse: collapse; width: 100%; }
+    .reveal table th { background: var(--accent); color: white; padding: 8px 12px; }
+    .reveal table td { padding: 6px 12px; border: 1px solid #ddd; }
+    .reveal table tr:nth-child(even) td { background: #f9f9f9; }
+    .reveal .note {
+      background: #FFF8E1; border-left: 4px solid #FFC107;
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .tip {
+      background: #E8F5E9; border-left: 4px solid var(--accent);
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .warn {
+      background: #FFEBEE; border-left: 4px solid #E53935;
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .slide-img {
+      max-width: 85%; max-height: 340px;
+      border: 1px solid #ddd; border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .reveal .img-caption {
+      font-size: 0.55em; color: #888; margin-top: 4px;
+      font-style: italic;
+    }
+    .reveal .title-slide h1 { font-size: 2.2em; }
+    .reveal .title-slide .subtitle { color: #666; font-size: 0.9em; }
+    .reveal .title-slide .meta {
+      font-size: 0.65em; color: #999; margin-top: 32px;
+      border-top: 1px solid #eee; padding-top: 12px;
+    }
+    .reveal .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left;
+    }
+    .reveal .badge {
+      display: inline-block; background: var(--accent); color: white;
+      padding: 2px 10px; border-radius: 12px; font-size: 0.6em;
+      vertical-align: middle; margin-left: 6px;
+    }
+    .reveal .progress-bar {
+      display: flex; gap: 8px; justify-content: center;
+      margin: 20px 0; flex-wrap: wrap;
+    }
+    .reveal .progress-step {
+      padding: 4px 14px; border-radius: 20px; font-size: 0.6em;
+      border: 2px solid var(--accent); color: var(--accent);
+    }
+    .reveal .progress-step.done {
+      background: var(--accent); color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="title-slide" data-background-color="#9C27B0">
+      <h1 style="color:white">📊 Google Таблицы</h1>
+      <p class="subtitle" style="color:rgba(255,255,255,.8)">Занятие 3 из 4</p>
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">
+        Сводные таблицы · Графики и диаграммы
+      </h2>
+    </section>
+
+    <section>
+      <h2>Программа занятия</h2>
+      <div class="progress-bar">
+        <span class="progress-step done">1. Что такое сводная таблица</span>
+        <span class="progress-step done">2. Требования к данным</span>
+        <span class="progress-step done">3. Как создать и настроить</span>
+        <span class="progress-step done">4. Типы диаграмм</span>
+        <span class="progress-step done">5. Настройка диаграммы</span>
+      </div>
+    </section>
+
+    <!-- СВОДНЫЕ ТАБЛИЦЫ -->
+    <section>
+      <section>
+        <h2>Тема 1: Сводные таблицы</h2>
+        <div class="two-col">
+          <div>
+            <div class="warn">❌ Без сводной таблицы:<br>Писать СУММ.ЕСЛИ для каждой комбинации вручную</div>
+          </div>
+          <div>
+            <div class="tip">✅ Со сводной таблицей:<br>3 клика — и готово</div>
+          </div>
+        </div>
+        <div class="note" style="margin-top:24px">
+          📌 Сводная таблица = инструмент для быстрого анализа больших данных <strong>без написания формул</strong>.
+        </div>
+      </section>
+
+      <section>
+        <h3>Требования к исходным данным</h3>
+        <ul>
+          <li>✅ Первая строка — заголовки столбцов (обязательно!)</li>
+          <li>✅ В каждом столбце — один тип данных</li>
+          <li>✅ Нет объединённых ячеек</li>
+          <li>✅ Нет полностью пустых строк внутри данных</li>
+        </ul>
+        <div class="warn" style="margin-top:20px">
+          ⚠️ Нарушение этих правил → сводная таблица будет работать некорректно.
+        </div>
+      </section>
+
+      <section>
+        <h3>Как создать сводную таблицу</h3>
+        <ol style="font-size:0.85em;text-align:left;max-width:700px;margin:0 auto">
+          <li>Кликните на любую ячейку внутри таблицы с данными</li>
+          <li><strong>Вставка → Сводная таблица</strong></li>
+          <li>Выберите «Новый лист» (рекомендуется)</li>
+          <li>Откроется панель редактора справа</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>Четыре области редактора</h3>
+        <table>
+          <tr><th>Область</th><th>Назначение</th><th>Пример</th></tr>
+          <tr><td>Строки</td><td>Группировка по строкам</td><td>Менеджер</td></tr>
+          <tr><td>Столбцы</td><td>Группировка по столбцам</td><td>Квартал</td></tr>
+          <tr><td>Значения</td><td>Что считаем</td><td>СУММ продаж</td></tr>
+          <tr><td>Фильтры</td><td>Фильтрация всей таблицы</td><td>Регион</td></tr>
+        </table>
+        <div class="tip" style="margin-top:16px">
+          💡 Правый клик → <strong>Обновить</strong> — сводная не обновляется автоматически!
+        </div>
+      </section>
+
+      <section>
+        <h3>Функции агрегации</h3>
+        <table>
+          <tr><th>Функция</th><th>Когда использовать</th></tr>
+          <tr><td>СУММ</td><td>Деньги, количество</td></tr>
+          <tr><td>СЧЁТ</td><td>Сколько записей</td></tr>
+          <tr><td>СРЕДНЕЕ</td><td>Средний чек, средняя оценка</td></tr>
+          <tr><td>МАХ / МИН</td><td>Максимальная / минимальная сделка</td></tr>
+        </table>
+      </section>
+    </section>
+
+    <!-- ДИАГРАММЫ -->
+    <section>
+      <section>
+        <h2>Тема 2: Диаграммы</h2>
+        <p>Число «578 000» — много или мало? Непонятно без контекста.</p>
+        <p>График мгновенно показывает <strong>тренды, сравнения и структуру</strong>.</p>
+        <h3 style="margin-top:20px">Как создать</h3>
+        <ol style="font-size:0.8em;text-align:left;max-width:600px;margin:0 auto">
+          <li>Выделите данные (включая заголовки)</li>
+          <li><strong>Вставка → Диаграмма</strong></li>
+          <li>Таблица предложит тип автоматически</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>Какой тип выбрать?</h3>
+        <table>
+          <tr><th>Тип</th><th>Когда</th><th>Пример</th></tr>
+          <tr><td>📊 Столбчатая</td><td>Сравнить категории</td><td>Продажи по менеджерам</td></tr>
+          <tr><td>📈 Линейная</td><td>Тренд во времени</td><td>Продажи по месяцам</td></tr>
+          <tr><td>🥧 Круговая</td><td>Доли (до 6 частей)</td><td>Доля рынка</td></tr>
+          <tr><td>📉 Гистограмма</td><td>Распределение</td><td>Размер сделок</td></tr>
+          <tr><td>📊+📈 Комбо</td><td>Два показателя</td><td>Выручка + маржа%</td></tr>
+        </table>
+        <div class="warn" style="margin-top:12px">
+          ⚠️ Круговая только если частей ≤ 6 и разница между ними заметна.
+        </div>
+      </section>
+
+      <section>
+        <h3>Настройка диаграммы</h3>
+        <div class="two-col">
+          <div>
+            <p><strong>Вкладка «Настройка»</strong></p>
+            <ul>
+              <li>Тип диаграммы</li>
+              <li>Диапазон данных</li>
+              <li>Заголовки осей</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>Вкладка «Стиль»</strong></p>
+            <ul>
+              <li>Цвета рядов</li>
+              <li>Подписи данных</li>
+              <li>Положение легенды</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip" style="margin-top:16px">
+          💡 Правый клик по диаграмме → <strong>«Переместить на отдельный лист»</strong> — удобно для презентаций.
+        </div>
+      </section>
+    </section>
+
+    <!-- ПРАКТИКА -->
+    <section>
+      <h2>Практические задания</h2>
+      <div class="two-col">
+        <div>
+          <h3>Задание 1 — Сводная таблица</h3>
+          <ol style="font-size:0.75em">
+            <li>Создайте таблицу 20+ строк: Менеджер · Регион · Месяц · Сумма</li>
+            <li>Сводная: строки — Менеджер, столбцы — Месяц, значения — СУММ</li>
+            <li>Добавьте фильтр по Региону</li>
+            <li>Сортируйте менеджеров по убыванию суммы</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Задание 2 — Диаграммы</h3>
+          <ol style="font-size:0.75em">
+            <li>Столбчатая: «Продажи по менеджерам»</li>
+            <li>Линейная: «Динамика продаж по месяцам»</li>
+            <li>Добавьте заголовки</li>
+            <li>Включите подписи данных</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section data-background-color="#9C27B0">
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">Занятие 3 — пройдено! ✅</h2>
+      <p style="color:rgba(255,255,255,.9)">Следующий шаг: <strong>Занятие 4 — AI и макросы</strong></p>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    plugins: [RevealHighlight, RevealNotes],
+    width: 1200,
+    height: 700,
+    margin: 0.06,
+  });
+</script>
+</body>
+</html>

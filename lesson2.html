@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Занятие 2 — Google Таблицы</title>
+
+  <!-- RevealJS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+
+  <style>
+    :root {
+      --accent: #1A73E8;
+      --r-heading-color: #1a1a1a;
+      --r-main-font: 'Segoe UI', Arial, sans-serif;
+      --r-heading-font: 'Segoe UI', Arial, sans-serif;
+      --r-link-color: #1A73E8;
+    }
+
+    .reveal h1 { font-size: 2em; color: var(--accent); }
+    .reveal h2 { font-size: 1.5em; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
+    .reveal h3 { font-size: 1.1em; color: #444; }
+    .reveal p, .reveal li { font-size: 0.85em; line-height: 1.6; }
+    .reveal pre { font-size: 0.7em; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+    .reveal table { font-size: 0.75em; border-collapse: collapse; width: 100%; }
+    .reveal table th { background: var(--accent); color: white; padding: 8px 12px; }
+    .reveal table td { padding: 6px 12px; border: 1px solid #ddd; }
+    .reveal table tr:nth-child(even) td { background: #f9f9f9; }
+    .reveal .note {
+      background: #FFF8E1; border-left: 4px solid #FFC107;
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .tip {
+      background: #E8F5E9; border-left: 4px solid var(--accent);
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .warn {
+      background: #FFEBEE; border-left: 4px solid #E53935;
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 0.75em; text-align: left; margin: 12px 0;
+    }
+    .reveal .slide-img {
+      max-width: 85%; max-height: 340px;
+      border: 1px solid #ddd; border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .reveal .img-caption {
+      font-size: 0.55em; color: #888; margin-top: 4px;
+      font-style: italic;
+    }
+    .reveal .title-slide h1 { font-size: 2.2em; }
+    .reveal .title-slide .subtitle { color: #666; font-size: 0.9em; }
+    .reveal .title-slide .meta {
+      font-size: 0.65em; color: #999; margin-top: 32px;
+      border-top: 1px solid #eee; padding-top: 12px;
+    }
+    .reveal .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left;
+    }
+    .reveal .badge {
+      display: inline-block; background: var(--accent); color: white;
+      padding: 2px 10px; border-radius: 12px; font-size: 0.6em;
+      vertical-align: middle; margin-left: 6px;
+    }
+    .reveal .progress-bar {
+      display: flex; gap: 8px; justify-content: center;
+      margin: 20px 0; flex-wrap: wrap;
+    }
+    .reveal .progress-step {
+      padding: 4px 14px; border-radius: 20px; font-size: 0.6em;
+      border: 2px solid var(--accent); color: var(--accent);
+    }
+    .reveal .progress-step.done {
+      background: var(--accent); color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="title-slide" data-background-color="#1A73E8">
+      <h1 style="color:white">📊 Google Таблицы</h1>
+      <p class="subtitle" style="color:rgba(255,255,255,.8)">Занятие 2 из 4</p>
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">
+        Фильтры · Формулы · ВПР · ЕСЛИ · Ошибки
+      </h2>
+    </section>
+
+    <section>
+      <h2>Программа занятия</h2>
+      <div class="progress-bar">
+        <span class="progress-step done">1. Фильтры</span>
+        <span class="progress-step done">2. Базовые формулы</span>
+        <span class="progress-step done">3. СУММ.ЕСЛИ</span>
+        <span class="progress-step done">4. ЕСЛИ (IF)</span>
+        <span class="progress-step done">5. ВПР / XLOOKUP</span>
+        <span class="progress-step done">6. Ошибки</span>
+        <span class="progress-step done">7. Данные между листами</span>
+      </div>
+      <div class="tip">💡 После занятий 1 и 2 — Тест №1 с практическими заданиями</div>
+    </section>
+
+    <!-- ФИЛЬТРЫ -->
+    <section>
+      <section>
+        <h2>Тема 1: Фильтры</h2>
+        <p>Фильтр <strong>временно скрывает</strong> строки, которые не подходят под условие.</p>
+        <div class="note">📌 Данные не удаляются — просто не показываются.</div>
+        <h3 style="margin-top:20px">Как включить</h3>
+        <ol style="font-size:0.8em;text-align:left;max-width:600px;margin:0 auto">
+          <li>Кликните на любую ячейку в таблице</li>
+          <li><strong>Данные → Создать фильтр</strong></li>
+          <li>В заголовках появятся кнопки ▼</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>Сохранить фильтр как шаблон</h3>
+        <ol style="font-size:0.8em;text-align:left;max-width:700px;margin:0 auto">
+          <li>Настройте нужный фильтр</li>
+          <li><strong>Данные → Режимы фильтрации → Сохранить как режим фильтра</strong></li>
+          <li>Дайте название: например «Только Москва»</li>
+        </ol>
+        <div class="tip" style="margin-top:20px">
+          💡 <strong>Сохранённый режим фильтрации</strong> не мешает другим пользователям.<br>
+          Каждый включает свой фильтр независимо — это удобно при совместной работе.
+        </div>
+      </section>
+    </section>
+
+    <!-- БАЗОВЫЕ ФОРМУЛЫ -->
+    <section>
+      <section>
+        <h2>Тема 2: Базовые формулы</h2>
+        <div class="warn">⚠️ Любая формула начинается с <code>=</code>. Без него — это просто текст.</div>
+        <table style="margin-top:20px">
+          <tr><th>Функция</th><th>Что делает</th><th>Пример</th></tr>
+          <tr><td><code>СУММ</code></td><td>Сумма значений</td><td>=СУММ(A1:A10)</td></tr>
+          <tr><td><code>СРЗНАЧ</code></td><td>Среднее значение</td><td>=СРЗНАЧ(B2:B20)</td></tr>
+          <tr><td><code>СЧЁТ</code></td><td>Кол-во ячеек с числами</td><td>=СЧЁТ(C2:C100)</td></tr>
+          <tr><td><code>СЧЁТЗ</code></td><td>Кол-во непустых ячеек</td><td>=СЧЁТЗ(D2:D100)</td></tr>
+          <tr><td><code>МИН / МАКС</code></td><td>Мин / макс значение</td><td>=МИН(A1:A50)</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>СУММ.ЕСЛИ — сумма по условию</h3>
+        <pre><code class="language-text">= СУММ.ЕСЛИ(диапазон_условия; условие; диапазон_суммирования)</code></pre>
+        <p style="font-size:0.8em">Пример: сумма продаж только по менеджеру «Иванов»</p>
+        <pre><code class="language-text">= СУММ.ЕСЛИ(A2:A100; "Иванов"; B2:B100)</code></pre>
+        <div class="tip" style="margin-top:16px">
+          СЧЁТЕСЛИ — считает строки по условию:<br>
+          <code>= СЧЁТЕСЛИ(A2:A100; "Иванов")</code><br>
+          <code>= СЧЁТЕСЛИ(B2:B100; "&gt;1000")</code>
+        </div>
+      </section>
+    </section>
+
+    <!-- ЕСЛИ -->
+    <section>
+      <section>
+        <h2>Тема 3: Функция ЕСЛИ (IF)</h2>
+        <pre><code class="language-text">= ЕСЛИ(условие; значение_если_истина; значение_если_ложь)</code></pre>
+        <table style="margin-top:16px">
+          <tr><th>Пример</th><th>Формула</th></tr>
+          <tr><td>Статус задачи</td><td><code>=ЕСЛИ(A2="Готово"; "✅"; "⏳")</code></td></tr>
+          <tr><td>Дедлайн</td><td><code>=ЕСЛИ(C2&lt;СЕГОДНЯ(); "Просрочено"; "В срок")</code></td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>Вложенный ЕСЛИ</h3>
+        <pre><code class="language-text">= ЕСЛИ(B2>=90; "Отлично";
+    ЕСЛИ(B2>=70; "Хорошо";
+        "Нужно подтянуть"))</code></pre>
+        <table style="margin-top:16px">
+          <tr><th>Оператор</th><th>Значение</th></tr>
+          <tr><td>=</td><td>равно</td></tr>
+          <tr><td>&lt;&gt;</td><td>не равно</td></tr>
+          <tr><td>&gt; / &lt;</td><td>больше / меньше</td></tr>
+          <tr><td>&gt;= / &lt;=</td><td>больше или равно / меньше или равно</td></tr>
+        </table>
+      </section>
+    </section>
+
+    <!-- ВПР -->
+    <section>
+      <section>
+        <h2>Тема 4: ВПР (VLOOKUP)</h2>
+        <p>Ищет значение в первом столбце таблицы и возвращает данные из другого столбца.</p>
+        <pre><code class="language-text">= ВПР(искомое_значение; таблица; номер_столбца; 0)</code></pre>
+        <table style="margin-top:16px">
+          <tr><th>Аргумент</th><th>Что это</th></tr>
+          <tr><td>искомое_значение</td><td>Что ищем (ячейка или текст)</td></tr>
+          <tr><td>таблица</td><td>Диапазон поиска (первый столбец = поиск)</td></tr>
+          <tr><td>номер_столбца</td><td>Какой столбец вернуть (1, 2, 3…)</td></tr>
+          <tr><td>0</td><td>Точное совпадение (почти всегда нужно 0)</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>Пример ВПР</h3>
+        <pre><code class="language-text">Справочник A:B
+101 | Ноутбук
+102 | Мышь
+103 | Клавиатура
+
+Формула — найти название по коду из D2:
+= ВПР(D2; $A$1:$B$5; 2; 0)
+         ↑            ↑
+    что ищем      возвращаем 2-й столбец</code></pre>
+        <div class="warn">⚠️ ВПР ищет только в <strong>первом</strong> столбце диапазона и возвращает только вправо.</div>
+      </section>
+
+      <section>
+        <h3>XLOOKUP — современная замена ВПР</h3>
+        <pre><code class="language-text">= XLOOKUP(что_ищем; диапазон_поиска; диапазон_результата; "Не найдено")</code></pre>
+        <table>
+          <tr><th></th><th>ВПР</th><th>XLOOKUP</th></tr>
+          <tr><td>Поиск</td><td>Только в 1-м столбце</td><td>В любом столбце</td></tr>
+          <tr><td>Результат</td><td>Только правее</td><td>Влево и вправо</td></tr>
+          <tr><td>Если не найдено</td><td>#Н/Д</td><td>Свой текст</td></tr>
+        </table>
+      </section>
+    </section>
+
+    <!-- ОШИБКИ -->
+    <section>
+      <h2>Тема 5: Ошибки в формулах</h2>
+      <table>
+        <tr><th>Ошибка</th><th>Причина</th><th>Исправление</th></tr>
+        <tr><td><code>#Н/Д</code></td><td>ВПР не нашёл значение</td><td>ЕСЛИОШИБКА / проверить данные</td></tr>
+        <tr><td><code>#ЗНАЧ!</code></td><td>Неверный тип (текст + число)</td><td>Проверить типы ячеек</td></tr>
+        <tr><td><code>#ДЕЛ/0!</code></td><td>Деление на ноль</td><td>=ЕСЛИ(B2=0; 0; A2/B2)</td></tr>
+        <tr><td><code>#ИМЯ?</code></td><td>Опечатка в функции</td><td>Проверить написание</td></tr>
+        <tr><td><code>#####</code></td><td>Столбец слишком узкий</td><td>Расширить столбец</td></tr>
+      </table>
+      <div class="tip" style="margin-top:20px">
+        💡 <strong>ЕСЛИОШИБКА</strong> — обёртка для любой ошибки:<br>
+        <code>=ЕСЛИОШИБКА(ВПР(D2; $A:$B; 2; 0); "Не найдено")</code>
+      </div>
+    </section>
+
+    <!-- ДАННЫЕ МЕЖДУ ЛИСТАМИ -->
+    <section>
+      <section>
+        <h2>Тема 6: Данные между листами и файлами</h2>
+        <h3>Ссылка на другой лист</h3>
+        <pre><code class="language-text">= Лист2!A1                // значение с другого листа
+= СУММ(Лист2!A1:A10)      // формула с другого листа
+= 'Данные продаж'!B5      // если в названии есть пробел</code></pre>
+      </section>
+      <section>
+        <h3>Ссылка на другой файл — IMPORTRANGE</h3>
+        <pre><code class="language-text">= IMPORTRANGE("https://docs.google.com/spreadsheets/d/XXX";
+              "Лист1!A:D")</code></pre>
+        <div class="tip">
+          💡 IMPORTRANGE создаёт <strong>живую ссылку</strong> — данные обновляются автоматически.<br>
+          При первом использовании нажмите «Разрешить доступ».
+        </div>
+        <div class="note" style="margin-top:12px">
+          Если нужна статическая копия:<br>
+          <strong>Ctrl+C → Ctrl+Shift+V → Только значения</strong>
+        </div>
+      </section>
+    </section>
+
+    <section data-background-color="#1A73E8">
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">Занятие 2 — пройдено! ✅</h2>
+      <p style="color:rgba(255,255,255,.9)">Следующий шаг: <strong>Тест №1</strong></p>
+      <p style="color:rgba(255,255,255,.7);font-size:0.8em;margin-top:32px">
+        Темы теста: интерфейс · ссылки · ЕСЛИ · ВПР · ЕСЛИОШИБКА + практические задания
+      </p>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    plugins: [RevealHighlight, RevealNotes],
+    width: 1200,
+    height: 700,
+    margin: 0.06,
+  });
+</script>
+</body>
+</html>
