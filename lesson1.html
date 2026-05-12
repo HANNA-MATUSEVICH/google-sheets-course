@@ -135,7 +135,7 @@
         <table style="margin-top:12px">
           <tr><th>Меню</th><th>Когда использовать</th></tr>
           <tr><td>Файл (File)</td><td>Создать копию, скачать, открыть доступ</td></tr>
-          <tr><td>Формат (Format)</td><td>Оформление ячеек, условное форматирование</td></tr>
+          <tr><td>Формат (Format)</td><td>Оформление ячеек, условное форматирование (Conditional formatting)</td></tr>
           <tr><td>Данные (Data)</td><td>Сортировка, фильтры</td></tr>
           <tr><td>Вставка (Insert)</td><td>Строки, столбцы, диаграммы</td></tr>
         </table>
@@ -175,7 +175,7 @@
         </table>
         <div class="warn" style="margin-top:20px">
           ⚠️ <strong>Частая ошибка:</strong> число выровнено влево → оно хранится как текст.
-          Исправление: <code>Формат → Число</code>
+          Исправление: <code>Формат → Число (Format → Number)</code>
         </div>
       </section>
 
@@ -263,14 +263,14 @@
           <tr><td>Просрочка</td><td>Текст = «Просрочено»</td><td>🔴 Красный</td></tr>
           <tr><td>Доход</td><td>Значение &gt; 0</td><td>🟢 Зелёный</td></tr>
           <tr><td>Расход</td><td>Значение &lt; 0</td><td>🔴 Красный</td></tr>
-          <tr><td>Дедлайн сегодня</td><td>Дата = СЕГОДНЯ()</td><td>🟡 Жёлтый</td></tr>
+          <tr><td>Дедлайн сегодня</td><td>Дата = СЕГОДНЯ() или TODAY()</td><td>🟡 Жёлтый</td></tr>
         </table>
       </section>
 
       <section>
         <h3>Тепловая карта (Color Scale)</h3>
         <p>Цвет по градиенту — от минимального к максимальному значению.</p>
-        <p style="color:#888;font-size:0.8em">Путь: Формат → Условное форматирование → <strong>Цветовая шкала</strong></p>
+        <p style="color:#888;font-size:0.8em">Путь: Формат → Условное форматирование (Conditional formatting) → <strong>Цветовая шкала (Color scale)</strong></p>
         <div class="tip">💡 Применение: анализ продаж по регионам, нагрузка по дням недели, оценки.</div>
         <div class="warn">
           ⚠️ Типичные ошибки:<br>
@@ -338,7 +338,7 @@ B$1 → строка 1 фиксирована, столбец сдвигаетс
         <div class="tip" style="margin-top:16px">
           💡 Именно поэтому с датами можно считать:<br>
           <code>= B2 - A2</code> → количество дней между датами<br>
-          <code>= СЕГОДНЯ() - A2</code> → сколько дней прошло
+          <code>= СЕГОДНЯ() или TODAY() - A2</code> → сколько дней прошло
         </div>
       </section>
 
@@ -346,22 +346,24 @@ B$1 → строка 1 фиксирована, столбец сдвигаетс
         <h3>Функции для работы с датами</h3>
         <table>
           <tr><th>Функция</th><th>Что делает</th><th>Пример</th></tr>
-          <tr><td><code>СЕГОДНЯ()</code></td><td>Текущая дата</td><td>=СЕГОДНЯ()</td></tr>
-          <tr><td><code>ТДАТА()</code></td><td>Дата и время</td><td>=ТДАТА()</td></tr>
-          <tr><td><code>ДЕНЬ(A1)</code></td><td>Число месяца</td><td>→ 15</td></tr>
-          <tr><td><code>МЕСЯЦ(A1)</code></td><td>Номер месяца</td><td>→ 3</td></tr>
-          <tr><td><code>ГОД(A1)</code></td><td>Год</td><td>→ 2025</td></tr>
+          <tr><td><code>СЕГОДНЯ() или TODAY()</code></td><td>Текущая дата</td><td>=СЕГОДНЯ() или TODAY()</td></tr>
+          <tr><td><code>ТДАТА() или NOW()</code></td><td>Дата и время</td><td>=ТДАТА() или NOW()</td></tr>
+          <tr><td><code>ДЕНЬ(A1) или DAY(A1)</code></td><td>Число месяца</td><td>→ 15</td></tr>
+          <tr><td><code>МЕСЯЦ(A1) или MONTH(A1)</code></td><td>Номер месяца</td><td>→ 3</td></tr>
+          <tr><td><code>ГОД(A1) или YEAR(A1)</code></td><td>Год</td><td>→ 2026</td></tr>
         </table>
         <div class="note" style="margin-top:12px">
           🌍 Формат отображения зависит от локали документа.<br>
-          Изменить: <strong>Файл → Настройки → Регион</strong>
+          Изменить: <strong>Файл → Настройки (Settings) → Регион (Locale)</strong>
         </div>
       </section>
     </section>
 
     <!-- ──────────── ПРАКТИКА ──────────── -->
     <section>
-      <h2>Практические задания</h2>
+      <h2>Практические задания <br><small style="font-weight: normal; font-size: 0.55em; text-transform: none"> (не обязательно) </small></h2>
+
+      
       <div class="two-col">
         <div>
           <h3>Задание 1 — Таблица умножения</h3>
@@ -388,9 +390,9 @@ B$1 → строка 1 фиксирована, столбец сдвигаетс
     <!-- ──────────── ФИНАЛЬНЫЙ СЛАЙД ──────────── -->
     <section data-background-color="#0F9D58">
       <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">Занятие 1 — пройдено! ✅</h2>
-      <p style="color:rgba(255,255,255,.9)">Следующий шаг: <strong style="color:white">Тест №1</strong> — теория + практика</p>
+      <!-- <p style="color:rgba(255,255,255,.9)">Следующий шаг: <strong style="color:white">Тест №1</strong> — теория + практика</p>
       <p style="color:rgba(255,255,255,.7);font-size:0.8em;margin-top:32px">
-        Темы теста: интерфейс · типы данных · ссылки · формулы · ВПР
+        Темы теста: интерфейс · типы данных · ссылки · формулы · ВПР -->
       </p>
     </section>
 
