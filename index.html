@@ -275,15 +275,60 @@
     .lesson:nth-child(2) .lesson-card { animation: fadeUp .5s .4s ease both; }
     .lesson:nth-child(3) .lesson-card { animation: fadeUp .5s .5s ease both; }
     .lesson:nth-child(4) .lesson-card { animation: fadeUp .5s .6s ease both; }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px;
+    }
+
+    /* Each language button */
+    .lang-btn {
+      font-family: var(--ff-head);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: var(--muted);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* Highlighted state for the currently active language */
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
 
+  <!-- LANGUAGE SWITCHER (fixed, top-right corner) -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLanguage('ru')">RU</button>
+    <button class="lang-btn"        onclick="setLanguage('en')">EN</button>
+  </div>
+
   <!-- HERO -->
   <header class="hero">
-    <div class="hero-eyebrow">📊 Онлайн-курс</div>
-    <h1>Google Таблицы<br>с нуля до уверенного уровня</h1>
-    <p class="hero-sub">4 занятия — от интерфейса и формул до сводных таблиц, диаграмм, AI и макросов</p>
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">📊 Онлайн-курс</div>
+    <h1 data-i18n-html="hero.h1">Google Таблицы<br>с нуля до уверенного уровня</h1>
+    <p class="hero-sub" data-i18n="hero.subtitle">4 занятия — от интерфейса и формул до сводных таблиц, диаграмм, AI и макросов</p>
   </header>
 
   <!-- LESSONS TIMELINE -->
@@ -292,18 +337,18 @@
     <!-- 1 -->
     <div class="lesson">
       <a class="lesson-card" href="lesson1.html" target="_blank">
-        <div class="lesson-num">Занятие 1 из 4</div>
-        <div class="lesson-title">Интерфейс · Форматирование · Ссылки · Даты</div>
+        <div class="lesson-num"   data-i18n="lesson1.num">Занятие 1 из 4</div>
+        <div class="lesson-title" data-i18n="lesson1.title">Интерфейс · Форматирование · Ссылки · Даты</div>
         <div class="lesson-topics">
-          <span class="topic-tag">Интерфейс</span>
-          <span class="topic-tag">Типы данных</span>
-          <span class="topic-tag">Навигация</span>
-          <span class="topic-tag">Форматирование</span>
-          <span class="topic-tag">Условное форматирование</span>
-          <span class="topic-tag">Ссылки $</span>
-          <span class="topic-tag">Даты</span>
+          <span class="topic-tag" data-i18n="lesson1.tag.interface">Интерфейс</span>
+          <span class="topic-tag" data-i18n="lesson1.tag.datatypes">Типы данных</span>
+          <span class="topic-tag" data-i18n="lesson1.tag.navigation">Навигация</span>
+          <span class="topic-tag" data-i18n="lesson1.tag.formatting">Форматирование</span>
+          <span class="topic-tag" data-i18n="lesson1.tag.conditional">Условное форматирование</span>
+          <span class="topic-tag" data-i18n="lesson1.tag.refs">Ссылки $</span>
+          <span class="topic-tag" data-i18n="lesson1.tag.dates">Даты</span>
         </div>
-        <span class="lesson-btn">Открыть презентацию <span class="btn-arrow">→</span></span>
+        <span class="lesson-btn" data-i18n="lesson.btn">Открыть презентацию <span class="btn-arrow">→</span></span>
       </a>
       <div class="lesson-spacer"></div>
     </div>
@@ -312,34 +357,34 @@
     <div class="lesson">
       <div class="lesson-spacer"></div>
       <a class="lesson-card" href="lesson2.html" target="_blank">
-        <div class="lesson-num">Занятие 2 из 4</div>
-        <div class="lesson-title">Формулы · ЕСЛИ · ВПР · Данные</div>
+        <div class="lesson-num"   data-i18n="lesson2.num">Занятие 2 из 4</div>
+        <div class="lesson-title" data-i18n="lesson2.title">Формулы · ЕСЛИ · ВПР · Данные</div>
         <div class="lesson-topics">
-          <span class="topic-tag">Основные формулы</span>
-          <span class="topic-tag">ЕСЛИ / И / ИЛИ</span>
-          <span class="topic-tag">ВПР</span>
-          <span class="topic-tag">СУММЕСЛИ</span>
-          <span class="topic-tag">СЧЁТЕСЛИ</span>
-          <span class="topic-tag">Сортировка</span>
-          <span class="topic-tag">Фильтрация</span>
+          <span class="topic-tag" data-i18n="lesson2.tag.formulas">Основные формулы</span>
+          <span class="topic-tag" data-i18n="lesson2.tag.if">ЕСЛИ / И / ИЛИ</span>
+          <span class="topic-tag" data-i18n="lesson2.tag.vlookup">ВПР</span>
+          <span class="topic-tag" data-i18n="lesson2.tag.sumif">СУММЕСЛИ</span>
+          <span class="topic-tag" data-i18n="lesson2.tag.countif">СЧЁТЕСЛИ</span>
+          <span class="topic-tag" data-i18n="lesson2.tag.sort">Сортировка</span>
+          <span class="topic-tag" data-i18n="lesson2.tag.filter">Фильтрация</span>
         </div>
-        <span class="lesson-btn">Открыть презентацию <span class="btn-arrow">→</span></span>
+        <span class="lesson-btn" data-i18n="lesson.btn">Открыть презентацию <span class="btn-arrow">→</span></span>
       </a>
     </div>
 
     <!-- 3 -->
     <div class="lesson">
       <a class="lesson-card" href="lesson3.html" target="_blank">
-        <div class="lesson-num">Занятие 3 из 4</div>
-        <div class="lesson-title">Сводные таблицы · Графики и диаграммы</div>
+        <div class="lesson-num"   data-i18n="lesson3.num">Занятие 3 из 4</div>
+        <div class="lesson-title" data-i18n="lesson3.title">Сводные таблицы · Графики и диаграммы</div>
         <div class="lesson-topics">
-          <span class="topic-tag">Сводные таблицы</span>
-          <span class="topic-tag">Требования к данным</span>
-          <span class="topic-tag">Строки / Столбцы / Значения</span>
-          <span class="topic-tag">Типы диаграмм</span>
-          <span class="topic-tag">Настройка графиков</span>
+          <span class="topic-tag" data-i18n="lesson3.tag.pivot">Сводные таблицы</span>
+          <span class="topic-tag" data-i18n="lesson3.tag.requirements">Требования к данным</span>
+          <span class="topic-tag" data-i18n="lesson3.tag.rowscols">Строки / Столбцы / Значения</span>
+          <span class="topic-tag" data-i18n="lesson3.tag.charttypes">Типы диаграмм</span>
+          <span class="topic-tag" data-i18n="lesson3.tag.chartsetup">Настройка графиков</span>
         </div>
-        <span class="lesson-btn">Открыть презентацию <span class="btn-arrow">→</span></span>
+        <span class="lesson-btn" data-i18n="lesson.btn">Открыть презентацию <span class="btn-arrow">→</span></span>
       </a>
       <div class="lesson-spacer"></div>
     </div>
@@ -348,17 +393,17 @@
     <div class="lesson">
       <div class="lesson-spacer"></div>
       <a class="lesson-card" href="lesson4.html" target="_blank">
-        <div class="lesson-num">Занятие 4 из 4</div>
-        <div class="lesson-title">AI в Таблицах · Макросы · Apps Script</div>
+        <div class="lesson-num"   data-i18n="lesson4.num">Занятие 4 из 4</div>
+        <div class="lesson-title" data-i18n="lesson4.title">AI в Таблицах · Макросы · Apps Script</div>
         <div class="lesson-topics">
           <span class="topic-tag">Gemini AI</span>
-          <span class="topic-tag">AI для формул</span>
-          <span class="topic-tag">Запись макросов</span>
+          <span class="topic-tag" data-i18n="lesson4.tag.aiFormulas">AI для формул</span>
+          <span class="topic-tag" data-i18n="lesson4.tag.macros">Запись макросов</span>
           <span class="topic-tag">Apps Script</span>
-          <span class="topic-tag">Триггеры</span>
-          <span class="topic-tag">Автоматизация</span>
+          <span class="topic-tag" data-i18n="lesson4.tag.triggers">Триггеры</span>
+          <span class="topic-tag" data-i18n="lesson4.tag.automation">Автоматизация</span>
         </div>
-        <span class="lesson-btn">Открыть презентацию <span class="btn-arrow">→</span></span>
+        <span class="lesson-btn" data-i18n="lesson.btn">Открыть презентацию <span class="btn-arrow">→</span></span>
       </a>
     </div>
 
@@ -406,9 +451,174 @@
 
   </main>
 
-  <footer class="footer">
+  <footer class="footer" data-i18n="footer.text">
     Google Таблицы — курс для самостоятельного изучения
   </footer>
+
+  <script>
+    // ─────────────────────────────────────────────
+    // All translatable strings in one place.
+    // To add a new language, add another key here.
+    // ─────────────────────────────────────────────
+    const translations = {
+      ru: {
+        // Page title (shown in the browser tab)
+        'page.title': 'Google Таблицы — Курс из 4 занятий',
+
+        // Hero section
+        'hero.eyebrow':  '📊 Онлайн-курс',
+        'hero.h1':       'Google Таблицы<br>с нуля до уверенного уровня',
+        'hero.subtitle': '4 занятия — от интерфейса и формул до сводных таблиц, диаграмм, AI и макросов',
+
+        // Lesson 1
+        'lesson1.num':            'Занятие 1 из 4',
+        'lesson1.title':          'Интерфейс · Форматирование · Ссылки · Даты',
+        'lesson1.tag.interface':  'Интерфейс',
+        'lesson1.tag.datatypes':  'Типы данных',
+        'lesson1.tag.navigation': 'Навигация',
+        'lesson1.tag.formatting': 'Форматирование',
+        'lesson1.tag.conditional':'Условное форматирование',
+        'lesson1.tag.refs':       'Ссылки $',
+        'lesson1.tag.dates':      'Даты',
+
+        // Lesson 2
+        'lesson2.num':           'Занятие 2 из 4',
+        'lesson2.title':         'Формулы · ЕСЛИ · ВПР · Данные',
+        'lesson2.tag.formulas':  'Основные формулы',
+        'lesson2.tag.if':        'ЕСЛИ / И / ИЛИ',
+        'lesson2.tag.vlookup':   'ВПР',
+        'lesson2.tag.sumif':     'СУММЕСЛИ',
+        'lesson2.tag.countif':   'СЧЁТЕСЛИ',
+        'lesson2.tag.sort':      'Сортировка',
+        'lesson2.tag.filter':    'Фильтрация',
+
+        // Lesson 3
+        'lesson3.num':               'Занятие 3 из 4',
+        'lesson3.title':             'Сводные таблицы · Графики и диаграммы',
+        'lesson3.tag.pivot':         'Сводные таблицы',
+        'lesson3.tag.requirements':  'Требования к данным',
+        'lesson3.tag.rowscols':      'Строки / Столбцы / Значения',
+        'lesson3.tag.charttypes':    'Типы диаграмм',
+        'lesson3.tag.chartsetup':    'Настройка графиков',
+
+        // Lesson 4
+        'lesson4.num':              'Занятие 4 из 4',
+        'lesson4.title':            'AI в Таблицах · Макросы · Apps Script',
+        'lesson4.tag.aiFormulas':   'AI для формул',
+        'lesson4.tag.macros':       'Запись макросов',
+        'lesson4.tag.triggers':     'Триггеры',
+        'lesson4.tag.automation':   'Автоматизация',
+
+        // Shared
+        'lesson.btn':  'Открыть презентацию ',
+        'footer.text': 'Google Таблицы — курс для самостоятельного изучения',
+      },
+
+      en: {
+        // Page title
+        'page.title': 'Google Sheets — 4-Lesson Course',
+
+        // Hero section
+        'hero.eyebrow':  '📊 Online Course',
+        'hero.h1':       'Google Sheets<br>from Zero to Confident',
+        'hero.subtitle': '4 lessons — from interface and formulas to pivot tables, charts, AI and macros',
+
+        // Lesson 1
+        'lesson1.num':            'Lesson 1 of 4',
+        'lesson1.title':          'Interface · Formatting · References · Dates',
+        'lesson1.tag.interface':  'Interface',
+        'lesson1.tag.datatypes':  'Data Types',
+        'lesson1.tag.navigation': 'Navigation',
+        'lesson1.tag.formatting': 'Formatting',
+        'lesson1.tag.conditional':'Conditional Formatting',
+        'lesson1.tag.refs':       '$ References',
+        'lesson1.tag.dates':      'Dates',
+
+        // Lesson 2
+        'lesson2.num':           'Lesson 2 of 4',
+        'lesson2.title':         'Formulas · IF · VLOOKUP · Data',
+        'lesson2.tag.formulas':  'Basic Formulas',
+        'lesson2.tag.if':        'IF / AND / OR',
+        'lesson2.tag.vlookup':   'VLOOKUP',
+        'lesson2.tag.sumif':     'SUMIF',
+        'lesson2.tag.countif':   'COUNTIF',
+        'lesson2.tag.sort':      'Sorting',
+        'lesson2.tag.filter':    'Filtering',
+
+        // Lesson 3
+        'lesson3.num':               'Lesson 3 of 4',
+        'lesson3.title':             'Pivot Tables · Charts and Graphs',
+        'lesson3.tag.pivot':         'Pivot Tables',
+        'lesson3.tag.requirements':  'Data Requirements',
+        'lesson3.tag.rowscols':      'Rows / Columns / Values',
+        'lesson3.tag.charttypes':    'Chart Types',
+        'lesson3.tag.chartsetup':    'Chart Setup',
+
+        // Lesson 4
+        'lesson4.num':              'Lesson 4 of 4',
+        'lesson4.title':            'AI in Sheets · Macros · Apps Script',
+        'lesson4.tag.aiFormulas':   'AI for Formulas',
+        'lesson4.tag.macros':       'Recording Macros',
+        'lesson4.tag.triggers':     'Triggers',
+        'lesson4.tag.automation':   'Automation',
+
+        // Shared
+        'lesson.btn':  'Open Presentation ',
+        'footer.text': 'Google Sheets — a self-study course',
+      },
+    };
+
+    // ─────────────────────────────────────────────
+    // Apply the chosen language to the whole page.
+    // ─────────────────────────────────────────────
+    function setLanguage(lang) {
+      const dict = translations[lang];
+
+      // Update plain-text elements (data-i18n attribute)
+      document.querySelectorAll('[data-i18n]').forEach(function (element) {
+        const key = element.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+          // Keep the arrow span inside the button intact
+          const arrow = element.querySelector('.btn-arrow');
+          element.textContent = dict[key];
+          if (arrow) {
+            element.appendChild(arrow);
+          }
+        }
+      });
+
+      // Update HTML elements — used for tags like <br> inside h1 (data-i18n-html)
+      document.querySelectorAll('[data-i18n-html]').forEach(function (element) {
+        const key = element.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) {
+          element.innerHTML = dict[key];
+        }
+      });
+
+      // Update the browser tab title
+      document.title = dict['page.title'];
+
+      // Update the <html lang=""> attribute for accessibility
+      document.documentElement.lang = lang;
+
+      // Highlight the active button in the switcher
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+
+      // Save the choice so it persists on next page visit
+      localStorage.setItem('language', lang);
+    }
+
+    // ─────────────────────────────────────────────
+    // On page load: restore the saved language,
+    // or fall back to Russian if nothing is saved.
+    // ─────────────────────────────────────────────
+    (function init() {
+      const savedLanguage = localStorage.getItem('language') || 'ru';
+      setLanguage(savedLanguage);
+    })();
+  </script>
 
 </body>
 </html>
