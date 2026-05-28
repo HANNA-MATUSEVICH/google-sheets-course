@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="lesson-id" content="l2">
   <title>Занятие 2 — Google Таблицы</title>
 
   <!-- RevealJS CDN -->
@@ -78,56 +79,79 @@
     .reveal .progress-step.done {
       background: var(--accent); color: white;
     }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher {
+      position: fixed; top: 12px; right: 16px; z-index: 1000;
+      display: flex; gap: 4px;
+      background: rgba(0,0,0,.06); border: 1px solid rgba(0,0,0,.12);
+      border-radius: 100px; padding: 3px;
+    }
+    .lang-btn {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 5px 12px; border-radius: 100px; border: none;
+      cursor: pointer; background: transparent; color: #888;
+      transition: background .2s, color .2s;
+    }
+    .lang-btn.active { background: rgba(0,0,0,.1); color: #222; }
+    .lang-btn:hover:not(.active) { color: #222; }
   </style>
 </head>
 <body>
+
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLanguage('ru')">RU</button>
+    <button class="lang-btn"        onclick="setLanguage('en')">EN</button>
+  </div>
+
 <div class="reveal">
   <div class="slides">
 
     <section class="title-slide" data-background-color="#1A73E8">
-      <h1 style="color:white">📊 Google Таблицы</h1>
-      <p class="subtitle" style="color:rgba(255,255,255,.8)">Занятие 2 из 4</p>
-      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">
+      <h1 style="color:white" data-i18n="shared.google.sheets">📊 Google Таблицы</h1>
+      <p class="subtitle" style="color:rgba(255,255,255,.8)" data-i18n="l2.cover.sub">Занятие 2 из 4</p>
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)" data-i18n="l2.cover.topic">
         Фильтры · Формулы · ВПР · ЕСЛИ · Ошибки
       </h2>
     </section>
 
     <section>
-      <h2>Программа занятия</h2>
+      <h2 data-i18n="shared.agenda.heading">Программа занятия</h2>
       <div class="progress-bar">
-        <span class="progress-step done">1. Фильтры</span>
-        <span class="progress-step done">2. Базовые формулы</span>
-        <span class="progress-step done">3. СУММ.ЕСЛИ</span>
-        <span class="progress-step done">4. ЕСЛИ (IF)</span>
-        <span class="progress-step done">5. ВПР / XLOOKUP</span>
-        <span class="progress-step done">6. Ошибки</span>
-        <span class="progress-step done">7. Данные между листами</span>
+        <span class="progress-step done" data-i18n="l2.agenda.s1">1. Фильтры</span>
+        <span class="progress-step done" data-i18n="l2.agenda.s2">2. Базовые формулы</span>
+        <span class="progress-step done" data-i18n="l2.agenda.s3">3. СУММ.ЕСЛИ</span>
+        <span class="progress-step done" data-i18n="l2.agenda.s4">4. ЕСЛИ (IF)</span>
+        <span class="progress-step done" data-i18n="l2.agenda.s5">5. ВПР / XLOOKUP</span>
+        <span class="progress-step done" data-i18n="l2.agenda.s6">6. Ошибки</span>
+        <span class="progress-step done" data-i18n="l2.agenda.s7">7. Данные между листами</span>
       </div>
-      <div class="tip">💡 После занятий 1 и 2 — Тест №1 с практическими заданиями</div>
+      <div class="tip" data-i18n="l2.agenda.tip">💡 После занятий 1 и 2 — Тест №1 с практическими заданиями</div>
     </section>
 
     <!-- ФИЛЬТРЫ -->
     <section>
       <section>
-        <h2>Тема 1: Фильтры</h2>
-        <p>Фильтр <strong>временно скрывает</strong> строки, которые не подходят под условие.</p>
-        <div class="note">📌 Данные не удаляются — просто не показываются.</div>
-        <h3 style="margin-top:20px">Как включить</h3>
+        <h2 data-i18n="l2.t1.h2">Тема 1: Фильтры</h2>
+        <p data-i18n-html="l2.t1.p">Фильтр <strong>временно скрывает</strong> строки, которые не подходят под условие.</p>
+        <div class="note" data-i18n="l2.t1.note">📌 Данные не удаляются — просто не показываются.</div>
+        <h3 style="margin-top:20px" data-i18n="l2.t1.h3">Как включить</h3>
         <ol style="font-size:0.8em;text-align:left;max-width:600px;margin:0 auto">
-          <li>Кликните на любую ячейку в таблице</li>
-          <li><strong>Данные → Создать фильтр</strong></li>
-          <li>В заголовках появятся кнопки ▼</li>
+          <li data-i18n="l2.t1.l1">Кликните на любую ячейку в таблице</li>
+          <li data-i18n-html="l2.t1.l2"><strong>Данные → Создать фильтр</strong></li>
+          <li data-i18n="l2.t1.l3">В заголовках появятся кнопки ▼</li>
         </ol>
       </section>
 
       <section>
-        <h3>Сохранить фильтр как шаблон</h3>
+        <h3 data-i18n="l2.t1.save.h3">Сохранить фильтр как шаблон</h3>
         <ol style="font-size:0.8em;text-align:left;max-width:700px;margin:0 auto">
-          <li>Настройте нужный фильтр</li>
-          <li><strong>Данные → Режимы фильтрации → Сохранить как режим фильтра</strong></li>
-          <li>Дайте название: например «Только Минск»</li>
+          <li data-i18n="l2.t1.save.l1">Настройте нужный фильтр</li>
+          <li data-i18n-html="l2.t1.save.l2"><strong>Данные → Режимы фильтрации → Сохранить как режим фильтра</strong></li>
+          <li data-i18n="l2.t1.save.l3">Дайте название: например «Только Минск»</li>
         </ol>
-        <div class="tip" style="margin-top:20px">
+        <div class="tip" style="margin-top:20px" data-i18n-html="l2.t1.save.tip">
           💡 <strong>Сохранённый режим фильтрации</strong> не мешает другим пользователям.<br>
           Каждый включает свой фильтр независимо — это удобно при совместной работе.
         </div>
@@ -137,25 +161,49 @@
     <!-- БАЗОВЫЕ ФОРМУЛЫ -->
     
       <section>
-        <h2>Тема 2: Базовые формулы</h2>
-        <div class="warn">⚠️ Любая формула начинается с <code>"="</code>. Без него — это просто текст.</div>
+        <h2 data-i18n="l2.t2.h2">Тема 2: Базовые формулы</h2>
+        <div class="warn" data-i18n-html="l2.t2.warn">⚠️ Любая формула начинается с <code>"="</code>. Без него — это просто текст.</div>
         <table style="margin-top:20px">
-          <tr><th>Функция</th><th>Что делает</th><th>Пример</th></tr>
-          <tr><td><code>СУММ</code></td><td>Сумма значений</td><td>=СУММ(A1:A10)</td></tr>
-          <tr><td><code>СРЗНАЧ</code></td><td>Среднее значение</td><td>=СРЗНАЧ(B2:B20)</td></tr>
-          <tr><td><code>СЧЁТ</code></td><td>Кол-во ячеек с числами</td><td>=СЧЁТ(C2:C100)</td></tr>
-          <tr><td><code>СЧЁТЗ</code></td><td>Кол-во непустых ячеек</td><td>=СЧЁТЗ(D2:D100)</td></tr>
-          <tr><td><code>МИН / МАКС</code></td><td>Мин / макс значение</td><td>=МИН(A1:A50)</td></tr>
+          <tr>
+            <th data-i18n="l2.t2.hd1">Функция</th>
+            <th data-i18n="l2.t2.hd2">Что делает</th>
+            <th data-i18n="l2.t2.hd3">Пример</th>
+          </tr>
+          <tr>
+            <td data-i18n-html="l2.t2.r1c1"><code>СУММ</code></td>
+            <td data-i18n="l2.t2.r1c2">Сумма значений</td>
+            <td>=СУММ(A1:A10)</td>
+          </tr>
+          <tr>
+            <td data-i18n-html="l2.t2.r2c1"><code>СРЗНАЧ</code></td>
+            <td data-i18n="l2.t2.r2c2">Среднее значение</td>
+            <td>=СРЗНАЧ(B2:B20)</td>
+          </tr>
+          <tr>
+            <td data-i18n-html="l2.t2.r3c1"><code>СЧЁТ</code></td>
+            <td data-i18n="l2.t2.r3c2">Кол-во ячеек с числами</td>
+            <td>=СЧЁТ(C2:C100)</td>
+          </tr>
+          <tr>
+            <td data-i18n-html="l2.t2.r4c1"><code>СЧЁТЗ</code></td>
+            <td data-i18n="l2.t2.r4c2">Кол-во непустых ячеек</td>
+            <td>=СЧЁТЗ(D2:D100)</td>
+          </tr>
+          <tr>
+            <td data-i18n-html="l2.t2.r5c1"><code>МИН / МАКС</code></td>
+            <td data-i18n="l2.t2.r5c2">Мин / макс значение</td>
+            <td>=МИН(A1:A50)</td>
+          </tr>
         </table>
       </section>
 
       <section>
-        <h2> Тема 3: СУММ.ЕСЛИ — сумма по условию</h2>
+        <h2 data-i18n="l2.t3.h2"> Тема 3: СУММ.ЕСЛИ — сумма по условию</h2>
         <pre><code class="language-text">= СУММ.ЕСЛИ(диапазон_условия; условие; диапазон_суммирования)</code></pre>
-        <p style="font-size:0.8em">Пример: сумма продаж только по менеджеру «Иванов»</p>
+        <p style="font-size:0.8em" data-i18n="l2.t3.p">Пример: сумма продаж только по менеджеру «Иванов»</p>
         <pre><code class="language-text">= СУММ.ЕСЛИ(A2:A100; "Иванов"; B2:B100)</code></pre>
         <div class="tip" style="margin-top:16px">
-          СЧЁТЕСЛИ — считает строки по условию:<br>
+          <span data-i18n="l2.t3.tip">СЧЁТЕСЛИ — считает строки по условию:</span><br>
           <code>= СЧЁТЕСЛИ(A2:A100; "Иванов")</code><br>
           <code>= СЧЁТЕСЛИ(B2:B100; "&gt;1000")</code>
         </div>
@@ -165,26 +213,38 @@
     <!-- ЕСЛИ -->
     <section>
       <section>
-        <h2>Тема 4: Функция ЕСЛИ (IF)</h2>
+        <h2 data-i18n="l2.t4.h2">Тема 4: Функция ЕСЛИ (IF)</h2>
         <pre><code class="language-text">= ЕСЛИ(условие; значение_если_истина; значение_если_ложь)</code></pre>
         <table style="margin-top:16px">
-          <tr><th>Пример</th><th>Формула</th></tr>
-          <tr><td>Статус задачи</td><td><code>=ЕСЛИ(A2="Готово"; "✅"; "⏳")</code></td></tr>
-          <tr><td>Дедлайн</td><td><code>=ЕСЛИ(C2&lt;СЕГОДНЯ(); "Просрочено"; "В срок")</code></td></tr>
+          <tr>
+            <th data-i18n="l2.t4.tbl.hd1">Пример</th>
+            <th data-i18n="l2.t4.tbl.hd2">Формула</th>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t4.tbl.r1c1">Статус задачи</td>
+            <td><code>=ЕСЛИ(A2="Готово"; "✅"; "⏳")</code></td>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t4.tbl.r2c1">Дедлайн</td>
+            <td><code>=ЕСЛИ(C2&lt;СЕГОДНЯ(); "Просрочено"; "В срок")</code></td>
+          </tr>
         </table>
       </section>
 
       <section>
-        <h3>Вложенный ЕСЛИ</h3>
+        <h3 data-i18n="l2.t4.nested.h3">Вложенный ЕСЛИ</h3>
         <pre><code class="language-text">= ЕСЛИ(B2>=90; "Отлично";
     ЕСЛИ(B2>=70; "Хорошо";
         "Нужно подтянуть"))</code></pre>
         <table style="margin-top:16px">
-          <tr><th>Оператор</th><th>Значение</th></tr>
-          <tr><td>=</td><td>равно</td></tr>
-          <tr><td>&lt;&gt;</td><td>не равно</td></tr>
-          <tr><td>&gt; / &lt;</td><td>больше / меньше</td></tr>
-          <tr><td>&gt;= / &lt;=</td><td>больше или равно / меньше или равно</td></tr>
+          <tr>
+            <th data-i18n="l2.t4.ops.hd1">Оператор</th>
+            <th data-i18n="l2.t4.ops.hd2">Значение</th>
+          </tr>
+          <tr><td>=</td><td data-i18n="l2.t4.ops.r1c2">равно</td></tr>
+          <tr><td>&lt;&gt;</td><td data-i18n="l2.t4.ops.r2c2">не равно</td></tr>
+          <tr><td>&gt; / &lt;</td><td data-i18n="l2.t4.ops.r3c2">больше / меньше</td></tr>
+          <tr><td>&gt;= / &lt;=</td><td data-i18n="l2.t4.ops.r4c2">больше или равно / меньше или равно</td></tr>
         </table>
       </section>
     </section>
@@ -192,20 +252,35 @@
     <!-- ВПР -->
     <section>
       <section>
-        <h2>Тема 5: ВПР (VLOOKUP)</h2>
-        <p>Ищет значение в первом столбце таблицы и возвращает данные из другого столбца.</p>
+        <h2 data-i18n="l2.t5.h2">Тема 5: ВПР (VLOOKUP)</h2>
+        <p data-i18n="l2.t5.p">Ищет значение в первом столбце таблицы и возвращает данные из другого столбца.</p>
         <pre><code class="language-text">= ВПР(искомое_значение; таблица; номер_столбца; 0)</code></pre>
         <table style="margin-top:16px">
-          <tr><th>Аргумент</th><th>Что это</th></tr>
-          <tr><td>искомое_значение</td><td>Что ищем (ячейка или текст)</td></tr>
-          <tr><td>таблица</td><td>Диапазон поиска (первый столбец = поиск)</td></tr>
-          <tr><td>номер_столбца</td><td>Какой столбец вернуть (1, 2, 3…)</td></tr>
-          <tr><td>0</td><td>Точное совпадение (почти всегда нужно 0)</td></tr>
+          <tr>
+            <th data-i18n="l2.t5.tbl.hd1">Аргумент</th>
+            <th data-i18n="l2.t5.tbl.hd2">Что это</th>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t5.tbl.r1c1">искомое_значение</td>
+            <td data-i18n="l2.t5.tbl.r1c2">Что ищем (ячейка или текст)</td>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t5.tbl.r2c1">таблица</td>
+            <td data-i18n="l2.t5.tbl.r2c2">Диапазон поиска (первый столбец = поиск)</td>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t5.tbl.r3c1">номер_столбца</td>
+            <td data-i18n="l2.t5.tbl.r3c2">Какой столбец вернуть (1, 2, 3…)</td>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t5.tbl.r4c1">0</td>
+            <td data-i18n="l2.t5.tbl.r4c2">Точное совпадение (почти всегда нужно 0)</td>
+          </tr>
         </table>
       </section>
 
       <section>
-        <h3>Пример ВПР</h3>
+        <h3 data-i18n="l2.t5.ex.h3">Пример ВПР</h3>
         <pre><code class="language-text">Справочник A:B
 101 | Ноутбук
 102 | Мышь
@@ -215,33 +290,65 @@
 = ВПР(D2; $A$1:$B$5; 2; 0)
          ↑            ↑
     что ищем      возвращаем 2-й столбец</code></pre>
-        <div class="warn">⚠️ ВПР ищет только в <strong>первом</strong> столбце диапазона и возвращает только вправо.</div>
+        <div class="warn" data-i18n-html="l2.t5.warn">⚠️ ВПР ищет только в <strong>первом</strong> столбце диапазона и возвращает только вправо.</div>
       </section>
 
       <section>
-        <h3>XLOOKUP — современная замена ВПР</h3>
+        <h3 data-i18n="l2.t5.xl.h3">XLOOKUP — современная замена ВПР</h3>
         <pre><code class="language-text">= XLOOKUP(что_ищем; диапазон_поиска; диапазон_результата; "Не найдено")</code></pre>
         <table>
-          <tr><th></th><th>ВПР</th><th>XLOOKUP</th></tr>
-          <tr><td>Поиск</td><td>Только в 1-м столбце</td><td>В любом столбце</td></tr>
-          <tr><td>Результат</td><td>Только правее</td><td>Влево и вправо</td></tr>
-          <tr><td>Если не найдено</td><td>#Н/Д</td><td>Свой текст</td></tr>
+          <tr><th></th><th data-i18n="l2.t5.xl.hd2">ВПР</th><th data-i18n="l2.t5.xl.hd3">XLOOKUP</th></tr>
+          <tr>
+            <td data-i18n="l2.t5.xl.r1c1">Поиск</td>
+            <td data-i18n="l2.t5.xl.r1c2">Только в 1-м столбце</td>
+            <td data-i18n="l2.t5.xl.r1c3">В любом столбце</td>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t5.xl.r2c1">Результат</td>
+            <td data-i18n="l2.t5.xl.r2c2">Только правее</td>
+            <td data-i18n="l2.t5.xl.r2c3">Влево и вправо</td>
+          </tr>
+          <tr>
+            <td data-i18n="l2.t5.xl.r3c1">Если не найдено</td>
+            <td>#Н/Д</td>
+            <td data-i18n="l2.t5.xl.r3c3">Свой текст</td>
+          </tr>
         </table>
       </section>
     </section>
 
     <!-- ОШИБКИ -->
     <section>
-      <h2>Тема 6: Ошибки в формулах</h2>
+      <h2 data-i18n="l2.t6.h2">Тема 6: Ошибки в формулах</h2>
       <table>
-        <tr><th>Ошибка</th><th>Причина</th><th>Исправление</th></tr>
-        <tr><td><code>#Н/Д</code></td><td>ВПР не нашёл значение</td><td>ЕСЛИОШИБКА / проверить данные</td></tr>
-        <tr><td><code>#ЗНАЧ!</code></td><td>Неверный тип (текст + число)</td><td>Проверить типы ячеек</td></tr>
-        <tr><td><code>#ДЕЛ/0!</code></td><td>Деление на ноль</td><td>=ЕСЛИ(B2=0; 0; A2/B2)</td></tr>
-        <tr><td><code>#ИМЯ?</code></td><td>Опечатка в функции</td><td>Проверить написание</td></tr>
+        <tr>
+          <th data-i18n="l2.t6.tbl.hd1">Ошибка</th>
+          <th data-i18n="l2.t6.tbl.hd2">Причина</th>
+          <th data-i18n="l2.t6.tbl.hd3">Исправление</th>
+        </tr>
+        <tr>
+          <td data-i18n-html="l2.t6.tbl.r1c1"><code>#Н/Д</code></td>
+          <td data-i18n="l2.t6.tbl.r1c2">ВПР не нашёл значение</td>
+          <td data-i18n="l2.t6.tbl.r1c3">ЕСЛИОШИБКА / проверить данные</td>
+        </tr>
+        <tr>
+          <td data-i18n-html="l2.t6.tbl.r2c1"><code>#ЗНАЧ!</code></td>
+          <td data-i18n="l2.t6.tbl.r2c2">Неверный тип (текст + число)</td>
+          <td data-i18n="l2.t6.tbl.r2c3">Проверить типы ячеек</td>
+        </tr>
+        <tr>
+          <td data-i18n-html="l2.t6.tbl.r3c1"><code>#ДЕЛ/0!</code></td>
+          <td data-i18n="l2.t6.tbl.r3c2">Деление на ноль</td>
+          <td>=ЕСЛИ(B2=0; 0; A2/B2)</td>
+        </tr>
+        <tr>
+          <td data-i18n-html="l2.t6.tbl.r4c1"><code>#ИМЯ?</code></td>
+          <td data-i18n="l2.t6.tbl.r4c2">Опечатка в функции</td>
+          <td data-i18n="l2.t6.tbl.r4c3">Проверить написание</td>
+        </tr>
       </table>
       <div class="tip" style="margin-top:20px">
-        💡 <strong>ЕСЛИОШИБКА</strong> — обёртка для любой ошибки:<br>
+        <span data-i18n-html="l2.t6.tip">💡 <strong>ЕСЛИОШИБКА</strong> — обёртка для любой ошибки:</span><br>
         <code>=ЕСЛИОШИБКА(ВПР(D2; $A:$B; 2; 0); "Не найдено")</code>
       </div>
     </section>
@@ -249,21 +356,21 @@
     <!-- ДАННЫЕ МЕЖДУ ЛИСТАМИ -->
     <section>
       <section>
-        <h2>Тема 7: Данные между листами и файлами</h2>
-        <h3>Ссылка на другой лист</h3>
+        <h2 data-i18n="l2.t7.h2">Тема 7: Данные между листами и файлами</h2>
+        <h3 data-i18n="l2.t7.h3a">Ссылка на другой лист</h3>
         <pre><code class="language-text">= Лист2!A1                // значение с другого листа
 = СУММ(Лист2!A1:A10)      // формула с другого листа
 = 'Данные продаж'!B5      // если в названии есть пробел</code></pre>
       </section>
       <section>
-        <h3>Ссылка на другой файл — IMPORTRANGE</h3>
+        <h3 data-i18n="l2.t7.h3b">Ссылка на другой файл — IMPORTRANGE</h3>
         <pre><code class="language-text">= IMPORTRANGE("https://docs.google.com/spreadsheets/d/XXX";
               "Лист1!A:D")</code></pre>
-        <div class="tip">
+        <div class="tip" data-i18n-html="l2.t7.imp.tip">
           💡 IMPORTRANGE создаёт <strong>живую ссылку</strong> — данные обновляются автоматически.<br>
           При первом использовании нажмите «Разрешить доступ».
         </div>
-        <div class="note" style="margin-top:12px">
+        <div class="note" style="margin-top:12px" data-i18n-html="l2.t7.imp.note">
           Если нужна статическая копия:<br>
           <strong>Ctrl+C → Ctrl+Shift+V → Только значения</strong>
         </div>
@@ -271,9 +378,9 @@
     </section>
 
     <section data-background-color="#1A73E8">
-      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">Занятие 2 — пройдено! ✅</h2>
-      <p style="color:rgba(255,255,255,.9)">Следующий шаг: <strong>Тест №1</strong></p>
-      <p style="color:rgba(255,255,255,.7);font-size:0.8em;margin-top:32px">
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)" data-i18n="l2.close.h2">Занятие 2 — пройдено! ✅</h2>
+      <p style="color:rgba(255,255,255,.9)" data-i18n-html="l2.close.p1">Следующий шаг: <strong>Тест №1</strong></p>
+      <p style="color:rgba(255,255,255,.7);font-size:0.8em;margin-top:32px" data-i18n="l2.close.p2">
         Темы теста: интерфейс · ссылки · ЕСЛИ · ВПР · ЕСЛИОШИБКА + практические задания
       </p>
     </section>
@@ -284,6 +391,7 @@
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="i18n.js"></script>
 <script>
   Reveal.initialize({
     hash: true,

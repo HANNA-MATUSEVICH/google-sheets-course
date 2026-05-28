@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="lesson-id" content="l3">
   <title>Занятие 3 — Google Таблицы</title>
 
   <!-- RevealJS CDN -->
@@ -78,93 +79,151 @@
     .reveal .progress-step.done {
       background: var(--accent); color: white;
     }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher {
+      position: fixed; top: 12px; right: 16px; z-index: 1000;
+      display: flex; gap: 4px;
+      background: rgba(0,0,0,.06); border: 1px solid rgba(0,0,0,.12);
+      border-radius: 100px; padding: 3px;
+    }
+    .lang-btn {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 5px 12px; border-radius: 100px; border: none;
+      cursor: pointer; background: transparent; color: #888;
+      transition: background .2s, color .2s;
+    }
+    .lang-btn.active { background: rgba(0,0,0,.1); color: #222; }
+    .lang-btn:hover:not(.active) { color: #222; }
   </style>
 </head>
 <body>
+
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLanguage('ru')">RU</button>
+    <button class="lang-btn"        onclick="setLanguage('en')">EN</button>
+  </div>
+
 <div class="reveal">
   <div class="slides">
 
     <section class="title-slide" data-background-color="#9C27B0">
-      <h1 style="color:white">📊 Google Таблицы</h1>
-      <p class="subtitle" style="color:rgba(255,255,255,.8)">Занятие 3 из 4</p>
-      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">
+      <h1 style="color:white" data-i18n="shared.google.sheets">📊 Google Таблицы</h1>
+      <p class="subtitle" style="color:rgba(255,255,255,.8)" data-i18n="l3.cover.sub">Занятие 3 из 4</p>
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)" data-i18n="l3.cover.topic">
         Сводные таблицы · Графики и диаграммы
       </h2>
     </section>
 
     <section>
-      <h2>Программа занятия</h2>
+      <h2 data-i18n="shared.agenda.heading">Программа занятия</h2>
       <div class="progress-bar">
-        <span class="progress-step done">1. Что такое сводная таблица</span>
-        <span class="progress-step done">2. Требования к данным</span>
-        <span class="progress-step done">3. Как создать и настроить</span>
-        <span class="progress-step done">4. Типы диаграмм</span>
-        <span class="progress-step done">5. Настройка диаграммы</span>
+        <span class="progress-step done" data-i18n="l3.agenda.s1">1. Что такое сводная таблица</span>
+        <span class="progress-step done" data-i18n="l3.agenda.s2">2. Требования к данным</span>
+        <span class="progress-step done" data-i18n="l3.agenda.s3">3. Как создать и настроить</span>
+        <span class="progress-step done" data-i18n="l3.agenda.s4">4. Типы диаграмм</span>
+        <span class="progress-step done" data-i18n="l3.agenda.s5">5. Настройка диаграммы</span>
       </div>
     </section>
 
     <!-- СВОДНЫЕ ТАБЛИЦЫ -->
     <section>
       <section>
-        <h2>Тема 1: Сводные таблицы</h2>
+        <h2 data-i18n="l3.t1.h2">Тема 1: Сводные таблицы</h2>
         <div class="two-col">
           <div>
-            <div class="warn">❌ Без сводной таблицы:<br>Писать СУММ.ЕСЛИ для каждой комбинации вручную</div>
+            <div class="warn" data-i18n-html="l3.t1.warn">❌ Без сводной таблицы:<br>Писать СУММ.ЕСЛИ для каждой комбинации вручную</div>
           </div>
           <div>
-            <div class="tip">✅ Со сводной таблицей:<br>3 клика — и готово</div>
+            <div class="tip" data-i18n-html="l3.t1.tip">✅ Со сводной таблицей:<br>3 клика — и готово</div>
           </div>
         </div>
-        <div class="note" style="margin-top:24px">
+        <div class="note" style="margin-top:24px" data-i18n-html="l3.t1.note">
           📌 Сводная таблица = инструмент для быстрого анализа больших данных <strong>без написания формул</strong>.
         </div>
       </section>
 
       <section>
-        <h3>Требования к исходным данным</h3>
+        <h3 data-i18n="l3.t1.req.h3">Требования к исходным данным</h3>
         <ul>
-          <li>✅ Первая строка — заголовки столбцов (обязательно!)</li>
-          <li>✅ В каждом столбце — один тип данных</li>
-          <li>✅ Нет объединённых ячеек</li>
-          <li>✅ Нет полностью пустых строк внутри данных</li>
+          <li data-i18n="l3.t1.req.l1">✅ Первая строка — заголовки столбцов (обязательно!)</li>
+          <li data-i18n="l3.t1.req.l2">✅ В каждом столбце — один тип данных</li>
+          <li data-i18n="l3.t1.req.l3">✅ Нет объединённых ячеек</li>
+          <li data-i18n="l3.t1.req.l4">✅ Нет полностью пустых строк внутри данных</li>
         </ul>
-        <div class="warn" style="margin-top:20px">
+        <div class="warn" style="margin-top:20px" data-i18n="l3.t1.req.warn">
           ⚠️ Нарушение этих правил → сводная таблица будет работать некорректно.
         </div>
       </section>
 
       <section>
-        <h3>Как создать сводную таблицу</h3>
+        <h3 data-i18n="l3.t1.create.h3">Как создать сводную таблицу</h3>
         <ol style="font-size:0.85em;text-align:left;max-width:700px;margin:0 auto">
-          <li>Кликните на любую ячейку внутри таблицы с данными</li>
-          <li><strong>Вставка → Сводная таблица</strong></li>
-          <li>Выберите «Новый лист» (рекомендуется)</li>
-          <li>Откроется панель редактора справа</li>
+          <li data-i18n="l3.t1.create.l1">Кликните на любую ячейку внутри таблицы с данными</li>
+          <li data-i18n-html="l3.t1.create.l2"><strong>Вставка → Сводная таблица</strong></li>
+          <li data-i18n="l3.t1.create.l3">Выберите «Новый лист» (рекомендуется)</li>
+          <li data-i18n="l3.t1.create.l4">Откроется панель редактора справа</li>
         </ol>
       </section>
 
       <section>
-        <h3>Четыре области редактора</h3>
+        <h3 data-i18n="l3.t1.areas.h3">Четыре области редактора</h3>
         <table>
-          <tr><th>Область</th><th>Назначение</th><th>Пример</th></tr>
-          <tr><td>Строки</td><td>Группировка по строкам</td><td>Менеджер</td></tr>
-          <tr><td>Столбцы</td><td>Группировка по столбцам</td><td>Квартал</td></tr>
-          <tr><td>Значения</td><td>Что считаем</td><td>СУММ продаж</td></tr>
-          <tr><td>Фильтры</td><td>Фильтрация всей таблицы</td><td>Регион</td></tr>
+          <tr>
+            <th data-i18n="l3.t1.areas.hd1">Область</th>
+            <th data-i18n="l3.t1.areas.hd2">Назначение</th>
+            <th data-i18n="l3.t1.areas.hd3">Пример</th>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.areas.r1c1">Строки</td>
+            <td data-i18n="l3.t1.areas.r1c2">Группировка по строкам</td>
+            <td data-i18n="l3.t1.areas.r1c3">Менеджер</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.areas.r2c1">Столбцы</td>
+            <td data-i18n="l3.t1.areas.r2c2">Группировка по столбцам</td>
+            <td data-i18n="l3.t1.areas.r2c3">Квартал</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.areas.r3c1">Значения</td>
+            <td data-i18n="l3.t1.areas.r3c2">Что считаем</td>
+            <td data-i18n="l3.t1.areas.r3c3">СУММ продаж</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.areas.r4c1">Фильтры</td>
+            <td data-i18n="l3.t1.areas.r4c2">Фильтрация всей таблицы</td>
+            <td data-i18n="l3.t1.areas.r4c3">Регион</td>
+          </tr>
         </table>
-        <div class="tip" style="margin-top:16px">
+        <div class="tip" style="margin-top:16px" data-i18n-html="l3.t1.areas.tip">
           💡 Правый клик → <strong>Обновить</strong> — сводная не обновляется автоматически!
         </div>
       </section>
 
       <section>
-        <h3>Функции агрегации</h3>
+        <h3 data-i18n="l3.t1.agg.h3">Функции агрегации</h3>
         <table>
-          <tr><th>Функция</th><th>Когда использовать</th></tr>
-          <tr><td>СУММ</td><td>Деньги, количество</td></tr>
-          <tr><td>СЧЁТ</td><td>Сколько записей</td></tr>
-          <tr><td>СРЕДНЕЕ</td><td>Средний чек, средняя оценка</td></tr>
-          <tr><td>МАХ / МИН</td><td>Максимальная / минимальная сделка</td></tr>
+          <tr>
+            <th data-i18n="l3.t1.agg.hd1">Функция</th>
+            <th data-i18n="l3.t1.agg.hd2">Когда использовать</th>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.agg.r1c1">СУММ</td>
+            <td data-i18n="l3.t1.agg.r1c2">Деньги, количество</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.agg.r2c1">СЧЁТ</td>
+            <td data-i18n="l3.t1.agg.r2c2">Сколько записей</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.agg.r3c1">СРЕДНЕЕ</td>
+            <td data-i18n="l3.t1.agg.r3c2">Средний чек, средняя оценка</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t1.agg.r4c1">МАХ / МИН</td>
+            <td data-i18n="l3.t1.agg.r4c2">Максимальная / минимальная сделка</td>
+          </tr>
         </table>
       </section>
     </section>
@@ -172,53 +231,77 @@
     <!-- ДИАГРАММЫ -->
     <section>
       <section>
-        <h2>Тема 2: Диаграммы</h2>
-        <p>Число «578 000» — много или мало? Непонятно без контекста.</p>
-        <p>График мгновенно показывает <strong>тренды, сравнения и структуру</strong>.</p>
-        <h3 style="margin-top:20px">Как создать</h3>
+        <h2 data-i18n="l3.t2.h2">Тема 2: Диаграммы</h2>
+        <p data-i18n="l3.t2.p1">Число «578 000» — много или мало? Непонятно без контекста.</p>
+        <p data-i18n-html="l3.t2.p2">График мгновенно показывает <strong>тренды, сравнения и структуру</strong>.</p>
+        <h3 style="margin-top:20px" data-i18n="l3.t2.how.h3">Как создать</h3>
         <ol style="font-size:0.8em;text-align:left;max-width:600px;margin:0 auto">
-          <li>Выделите данные (включая заголовки)</li>
-          <li><strong>Вставка → Диаграмма</strong></li>
-          <li>Таблица предложит тип автоматически</li>
+          <li data-i18n="l3.t2.how.l1">Выделите данные (включая заголовки)</li>
+          <li data-i18n-html="l3.t2.how.l2"><strong>Вставка → Диаграмма</strong></li>
+          <li data-i18n="l3.t2.how.l3">Таблица предложит тип автоматически</li>
         </ol>
       </section>
 
       <section>
-        <h3>Какой тип выбрать?</h3>
+        <h3 data-i18n="l3.t2.type.h3">Какой тип выбрать?</h3>
         <table>
-          <tr><th>Тип</th><th>Когда</th><th>Пример</th></tr>
-          <tr><td>📊 Столбчатая</td><td>Сравнить категории</td><td>Продажи по менеджерам</td></tr>
-          <tr><td>📈 Линейная</td><td>Тренд во времени</td><td>Продажи по месяцам</td></tr>
-          <tr><td>🥧 Круговая</td><td>Доли (до 6 частей)</td><td>Доля рынка</td></tr>
-          <tr><td>📉 Гистограмма</td><td>Распределение</td><td>Размер сделок</td></tr>
-          <tr><td>📊+📈 Комбо</td><td>Два показателя</td><td>Выручка + маржа%</td></tr>
+          <tr>
+            <th data-i18n="l3.t2.type.hd1">Тип</th>
+            <th data-i18n="l3.t2.type.hd2">Когда</th>
+            <th data-i18n="l3.t2.type.hd3">Пример</th>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t2.type.r1c1">📊 Столбчатая</td>
+            <td data-i18n="l3.t2.type.r1c2">Сравнить категории</td>
+            <td data-i18n="l3.t2.type.r1c3">Продажи по менеджерам</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t2.type.r2c1">📈 Линейная</td>
+            <td data-i18n="l3.t2.type.r2c2">Тренд во времени</td>
+            <td data-i18n="l3.t2.type.r2c3">Продажи по месяцам</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t2.type.r3c1">🥧 Круговая</td>
+            <td data-i18n="l3.t2.type.r3c2">Доли (до 6 частей)</td>
+            <td data-i18n="l3.t2.type.r3c3">Доля рынка</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t2.type.r4c1">📉 Гистограмма</td>
+            <td data-i18n="l3.t2.type.r4c2">Распределение</td>
+            <td data-i18n="l3.t2.type.r4c3">Размер сделок</td>
+          </tr>
+          <tr>
+            <td data-i18n="l3.t2.type.r5c1">📊+📈 Комбо</td>
+            <td data-i18n="l3.t2.type.r5c2">Два показателя</td>
+            <td data-i18n="l3.t2.type.r5c3">Выручка + маржа%</td>
+          </tr>
         </table>
-        <div class="warn" style="margin-top:12px">
+        <div class="warn" style="margin-top:12px" data-i18n="l3.t2.type.warn">
           ⚠️ Круговая только если частей ≤ 6 и разница между ними заметна.
         </div>
       </section>
 
       <section>
-        <h3>Настройка диаграммы</h3>
+        <h3 data-i18n="l3.t2.set.h3">Настройка диаграммы</h3>
         <div class="two-col">
           <div>
-            <p><strong>Вкладка «Настройка»</strong></p>
+            <p data-i18n-html="l3.t2.set.p1"><strong>Вкладка «Настройка»</strong></p>
             <ul>
-              <li>Тип диаграммы</li>
-              <li>Диапазон данных</li>
-              <li>Заголовки осей</li>
+              <li data-i18n="l3.t2.set.l1a">Тип диаграммы</li>
+              <li data-i18n="l3.t2.set.l1b">Диапазон данных</li>
+              <li data-i18n="l3.t2.set.l1c">Заголовки осей</li>
             </ul>
           </div>
           <div>
-            <p><strong>Вкладка «Стиль»</strong></p>
+            <p data-i18n-html="l3.t2.set.p2"><strong>Вкладка «Стиль»</strong></p>
             <ul>
-              <li>Цвета рядов</li>
-              <li>Подписи данных</li>
-              <li>Положение легенды</li>
+              <li data-i18n="l3.t2.set.l2a">Цвета рядов</li>
+              <li data-i18n="l3.t2.set.l2b">Подписи данных</li>
+              <li data-i18n="l3.t2.set.l2c">Положение легенды</li>
             </ul>
           </div>
         </div>
-        <div class="tip" style="margin-top:16px">
+        <div class="tip" style="margin-top:16px" data-i18n-html="l3.t2.set.tip">
           💡 Правый клик по диаграмме → <strong>«Переместить на отдельный лист»</strong> — удобно для презентаций.
         </div>
       </section>
@@ -226,32 +309,32 @@
 
     <!-- ПРАКТИКА -->
     <section>
-      <h2>Практические задания</h2>
+      <h2 data-i18n="l3.pr.h2">Практические задания</h2>
       <div class="two-col">
         <div>
-          <h3>Задание 1 — Сводная таблица</h3>
+          <h3 data-i18n="l3.pr.t1.h3">Задание 1 — Сводная таблица</h3>
           <ol style="font-size:0.75em">
-            <li>Создайте таблицу 20+ строк: Менеджер · Регион · Месяц · Сумма</li>
-            <li>Сводная: строки — Менеджер, столбцы — Месяц, значения — СУММ</li>
-            <li>Добавьте фильтр по Региону</li>
-            <li>Сортируйте менеджеров по убыванию суммы</li>
+            <li data-i18n="l3.pr.t1.l1">Создайте таблицу 20+ строк: Менеджер · Регион · Месяц · Сумма</li>
+            <li data-i18n="l3.pr.t1.l2">Сводная: строки — Менеджер, столбцы — Месяц, значения — СУММ</li>
+            <li data-i18n="l3.pr.t1.l3">Добавьте фильтр по Региону</li>
+            <li data-i18n="l3.pr.t1.l4">Сортируйте менеджеров по убыванию суммы</li>
           </ol>
         </div>
         <div>
-          <h3>Задание 2 — Диаграммы</h3>
+          <h3 data-i18n="l3.pr.t2.h3">Задание 2 — Диаграммы</h3>
           <ol style="font-size:0.75em">
-            <li>Столбчатая: «Продажи по менеджерам»</li>
-            <li>Линейная: «Динамика продаж по месяцам»</li>
-            <li>Добавьте заголовки</li>
-            <li>Включите подписи данных</li>
+            <li data-i18n="l3.pr.t2.l1">Столбчатая: «Продажи по менеджерам»</li>
+            <li data-i18n="l3.pr.t2.l2">Линейная: «Динамика продаж по месяцам»</li>
+            <li data-i18n="l3.pr.t2.l3">Добавьте заголовки</li>
+            <li data-i18n="l3.pr.t2.l4">Включите подписи данных</li>
           </ol>
         </div>
       </div>
     </section>
 
     <section data-background-color="#9C27B0">
-      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)">Занятие 3 — пройдено! ✅</h2>
-      <p style="color:rgba(255,255,255,.9)">Следующий шаг: <strong>Занятие 4 — AI и макросы</strong></p>
+      <h2 style="color:white;border-bottom-color:rgba(255,255,255,.4)" data-i18n="l3.close.h2">Занятие 3 — пройдено! ✅</h2>
+      <p style="color:rgba(255,255,255,.9)" data-i18n-html="l3.close.p">Следующий шаг: <strong>Занятие 4 — AI и макросы</strong></p>
     </section>
 
   </div>
@@ -260,6 +343,7 @@
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="i18n.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
