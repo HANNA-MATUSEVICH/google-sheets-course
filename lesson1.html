@@ -410,7 +410,7 @@
               <strong>Относительная (A1)</strong><br>
               Сдвигается при копировании
             </div>
-            <pre><code class="language-text">C1 = A1 + B1
+            <pre><code class="language-text" data-i18n="l1.t6.code.rel">C1 = A1 + B1
 C2 = A2 + B2  ← сдвиг
 C3 = A3 + B3</code></pre>
           </div>
@@ -419,9 +419,9 @@ C3 = A3 + B3</code></pre>
               <strong>Абсолютная ($A$1)</strong><br>
               Не меняется при копировании
             </div>
-            <pre><code class="language-text">= A1 * $B$1  ← $B$1 всегда
-= A2 * $B$1  ← одна и та
-= A3 * $B$1  ← же ячейка</code></pre>
+            <pre><code class="language-text" data-i18n="l1.t6.code.abs">= A1 * $B$1  ← $B$1 всегда одна и та же ячейка
+= A2 * $B$1
+= A3 * $B$1</code></pre>
           </div>
         </div>
         <div class="note" data-i18n-html="l1.t6.note2">💡 Клавиша <strong>F4</strong> при редактировании ссылки — добавляет $ автоматически.</div>
@@ -431,7 +431,7 @@ C3 = A3 + B3</code></pre>
         <h3 data-i18n="l1.t6.h3">Таблица умножения — пример</h3>
         <table>
           <tr>
-            <th data-i18n="l1.t6.tbl.hd1">Запись</th>
+            <th data-i18n="l1.t6.tbl.hd1">Адрес ячейки</th>
             <th data-i18n="l1.t6.tbl.hd2">Что зафиксировано</th>
             <th data-i18n="l1.t6.tbl.hd3">Когда использовать</th>
           </tr>
@@ -451,7 +451,7 @@ C3 = A3 + B3</code></pre>
             <td data-i18n="l1.t6.tbl.r3c3">Данные из фиксированной строки</td>
           </tr>
         </table>
-        <pre style="margin-top:20px"><code class="language-text">Формула в B2 для таблицы умножения:
+        <pre style="margin-top:20px"><code class="language-text" data-i18n="l1.t6.code.mult">Формула в B2 для таблицы умножения:
 = $A2 * B$1
 
 $A2 → столбец A фиксирован, строка сдвигается вниз
@@ -464,7 +464,7 @@ B$1 → строка 1 фиксирована, столбец сдвигаетс
       <section>
         <h2 data-i18n="l1.t7.h2">Тема 7: Даты и форматы чисел</h2>
         <p data-i18n-html="l1.t7.p1">Дата в Google Таблицах — это <strong>число</strong>.</p>
-        <p style="color:#888;font-size:0.8em" data-i18n="l1.t7.p2">Точка отсчёта: 30 декабря 1899 года</p>
+        <p style="color:#888;font-size:0.8em" data-i18n="l1.t7.p2">Day Zero — точка отсчёта: 30 декабря 1899 года</p>
         <table style="margin-top:16px">
           <tr>
             <th data-i18n="l1.t7.tbl.hd1">Дата</th>
@@ -476,7 +476,7 @@ B$1 → строка 1 фиксирована, столбец сдвигаетс
         <div class="tip" style="margin-top:16px" data-i18n-html="l1.t7.tip">
           💡 Именно поэтому с датами можно считать:<br>
           <code>= B2 - A2</code> → количество дней между датами<br>
-          <code>= СЕГОДНЯ() или TODAY() - A2</code> → сколько дней прошло
+          <code>= TODAY() - A2</code> → сколько дней прошло
         </div>
       </section>
 
@@ -489,27 +489,27 @@ B$1 → строка 1 фиксирована, столбец сдвигаетс
             <th data-i18n="l1.t7.fn.hd3">Пример</th>
           </tr>
           <tr>
-            <td><code>СЕГОДНЯ() или TODAY()</code></td>
+            <td><code>TODAY()</code></td>
             <td data-i18n="l1.t7.fn.r1c2">Текущая дата</td>
-            <td>=СЕГОДНЯ() или TODAY()</td>
+            <td>=TODAY()</td>
           </tr>
           <tr>
-            <td><code>ТДАТА() или NOW()</code></td>
+            <td><code>NOW()</code></td>
             <td data-i18n="l1.t7.fn.r2c2">Дата и время</td>
-            <td>=ТДАТА() или NOW()</td>
+            <td>=NOW()</td>
           </tr>
           <tr>
-            <td><code>ДЕНЬ(A1) или DAY(A1)</code></td>
+            <td><code>DAY(A1)</code></td>
             <td data-i18n="l1.t7.fn.r3c2">Число месяца</td>
             <td>→ 15</td>
           </tr>
           <tr>
-            <td><code>МЕСЯЦ(A1) или MONTH(A1)</code></td>
+            <td><code>MONTH(A1)</code></td>
             <td data-i18n="l1.t7.fn.r4c2">Номер месяца</td>
             <td>→ 3</td>
           </tr>
           <tr>
-            <td><code>ГОД(A1) или YEAR(A1)</code></td>
+            <td><code>YEAR(A1)</code></td>
             <td data-i18n="l1.t7.fn.r5c2">Год</td>
             <td>→ 2026</td>
           </tr>
@@ -534,7 +534,7 @@ B$1 → строка 1 фиксирована, столбец сдвигаетс
             <li data-i18n-html="l1.pr.t1.l2">Используйте <strong>одну формулу</strong> с правильными ссылками</li>
             <li data-i18n="l1.pr.t1.l3">Растяните на весь диапазон</li>
           </ul>
-          <div class="warn" data-i18n="l1.pr.t1.warn">✅ Если написали 81 формулу — что-то пошло не так</div>
+          <div class="warn" data-i18n="l1.pr.t1.warn">✅ Если пришлось вручную написать 81 формулу — что-то пошло не так</div>
         </div>
         <div>
           <h3 data-i18n="l1.pr.t2.h3">Задание 2 — Тепловая карта</h3>
