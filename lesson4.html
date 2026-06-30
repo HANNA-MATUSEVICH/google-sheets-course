@@ -142,6 +142,9 @@
         <div class="note" style="margin-top:20px" data-i18n="l4.t1.what.note">
           📌 Открыть: иконка Gemini в правом верхнем углу
         </div>
+        <div class="warn" style="margin-top:12px" data-i18n="l4.t1.what.warn">
+          ⚠️ Если у вас нет кнопки «Ask Gemini» в таблице, возможно, ваш Workspace не разрешает использование AI из соображений конфиденциальности.
+        </div>
       </section>
 
       <section>
@@ -220,7 +223,7 @@
 
       <section>
         <h3 data-i18n="l4.t2.apps.h3">Apps Script — примеры кода</h3>
-        <pre><code class="language-javascript">// Покрасить ячейку A1 в зелёный
+        <pre><code class="language-javascript" data-i18n="l4.t2.apps.code">// Покрасить ячейку A1 в зелёный
 function formatHeader() {
   var sheet = SpreadsheetApp
     .getActiveSpreadsheet()
@@ -287,7 +290,7 @@ function formatHeader() {
         <div>
           <h3 data-i18n="l4.pr.t2.h3">Задание 2 — Макрос</h3>
           <ol style="font-size:0.75em">
-            <li data-i18n="l4.pr.t2.l1">Запишите макрос: жирная первая строка + синяя заливка + автоподбор ширины</li>
+            <li data-i18n="l4.pr.t2.l1">Сделайте текст в первой строке жирным + залейте ячейку синим + автоподбор ширины столбца</li>
             <li data-i18n="l4.pr.t2.l2">Создайте кнопку на листе</li>
             <li data-i18n="l4.pr.t2.l3">Привяжите макрос к кнопке</li>
           </ol>
