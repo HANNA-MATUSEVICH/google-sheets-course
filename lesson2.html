@@ -172,38 +172,38 @@
           <tr>
             <td data-i18n-html="l2.t2.r1c1"><code>СУММ</code></td>
             <td data-i18n="l2.t2.r1c2">Сумма значений</td>
-            <td>=СУММ(A1:A10)</td>
+            <td data-i18n="l2.t2.r1c3">=СУММ(A1:A10)</td>
           </tr>
           <tr>
             <td data-i18n-html="l2.t2.r2c1"><code>СРЗНАЧ</code></td>
             <td data-i18n="l2.t2.r2c2">Среднее значение</td>
-            <td>=СРЗНАЧ(B2:B20)</td>
+            <td data-i18n="l2.t2.r2c3">=СРЗНАЧ(B2:B20)</td>
           </tr>
           <tr>
             <td data-i18n-html="l2.t2.r3c1"><code>СЧЁТ</code></td>
             <td data-i18n="l2.t2.r3c2">Кол-во ячеек с числами</td>
-            <td>=СЧЁТ(C2:C100)</td>
+            <td data-i18n="l2.t2.r3c3">=СЧЁТ(C2:C100)</td>
           </tr>
           <tr>
             <td data-i18n-html="l2.t2.r4c1"><code>СЧЁТЗ</code></td>
             <td data-i18n="l2.t2.r4c2">Кол-во непустых ячеек</td>
-            <td>=СЧЁТЗ(D2:D100)</td>
+            <td data-i18n="l2.t2.r4c3">=СЧЁТЗ(D2:D100)</td>
           </tr>
           <tr>
             <td data-i18n-html="l2.t2.r5c1"><code>МИН / МАКС</code></td>
             <td data-i18n="l2.t2.r5c2">Мин / макс значение</td>
-            <td>=МИН(A1:A50)</td>
+            <td data-i18n="l2.t2.r5c3">=МИН(A1:A50)</td>
           </tr>
         </table>
       </section>
 
       <section>
         <h2 data-i18n="l2.t3.h2"> Тема 3: СУММ.ЕСЛИ — сумма по условию</h2>
-        <pre><code class="language-text">= СУММ.ЕСЛИ(диапазон_условия; условие; диапазон_суммирования)</code></pre>
+        <pre><code class="language-text" data-i18n="l2.t3.code1">= СУММ.ЕСЛИ(диапазон_условия; условие; диапазон_суммирования)</code></pre>
         <p style="font-size:0.8em" data-i18n="l2.t3.p">Пример: сумма продаж только по менеджеру «Иванов»</p>
-        <pre><code class="language-text">= СУММ.ЕСЛИ(A2:A100; "Иванов"; B2:B100)</code></pre>
-        <div class="tip" style="margin-top:16px">
-          <span data-i18n="l2.t3.tip">СЧЁТЕСЛИ — считает строки по условию:</span><br>
+        <pre><code class="language-text" data-i18n="l2.t3.code2">= СУММ.ЕСЛИ(A2:A100; "Иванов"; B2:B100)</code></pre>
+        <div class="tip" style="margin-top:16px" data-i18n-html="l2.t3.tip.html">
+          СЧЁТЕСЛИ — считает строки по условию:<br>
           <code>= СЧЁТЕСЛИ(A2:A100; "Иванов")</code><br>
           <code>= СЧЁТЕСЛИ(B2:B100; "&gt;1000")</code>
         </div>
@@ -214,7 +214,7 @@
     <section>
       <section>
         <h2 data-i18n="l2.t4.h2">Тема 4: Функция ЕСЛИ (IF)</h2>
-        <pre><code class="language-text">= ЕСЛИ(условие; значение_если_истина; значение_если_ложь)</code></pre>
+        <pre><code class="language-text" data-i18n="l2.t4.code1">= ЕСЛИ(условие; значение_если_истина; значение_если_ложь)</code></pre>
         <table style="margin-top:16px">
           <tr>
             <th data-i18n="l2.t4.tbl.hd1">Пример</th>
@@ -222,18 +222,18 @@
           </tr>
           <tr>
             <td data-i18n="l2.t4.tbl.r1c1">Статус задачи</td>
-            <td><code>=ЕСЛИ(A2="Готово"; "✅"; "⏳")</code></td>
+            <td data-i18n-html="l2.t4.tbl.r1c2"><code>=ЕСЛИ(A2="Готово"; "✅"; "⏳")</code></td>
           </tr>
           <tr>
             <td data-i18n="l2.t4.tbl.r2c1">Дедлайн</td>
-            <td><code>=ЕСЛИ(C2&lt;СЕГОДНЯ(); "Просрочено"; "В срок")</code></td>
+            <td data-i18n-html="l2.t4.tbl.r2c2"><code>=ЕСЛИ(C2&lt;СЕГОДНЯ(); "Просрочено"; "В срок")</code></td>
           </tr>
         </table>
       </section>
 
       <section>
         <h3 data-i18n="l2.t4.nested.h3">Вложенный ЕСЛИ</h3>
-        <pre><code class="language-text">= ЕСЛИ(B2>=90; "Отлично";
+        <pre><code class="language-text" data-i18n="l2.t4.nested.code">= ЕСЛИ(B2>=90; "Отлично";
     ЕСЛИ(B2>=70; "Хорошо";
         "Нужно подтянуть"))</code></pre>
         <table style="margin-top:16px">
@@ -254,7 +254,7 @@
       <section>
         <h2 data-i18n="l2.t5.h2">Тема 5: ВПР (VLOOKUP)</h2>
         <p data-i18n="l2.t5.p">Ищет значение в первом столбце таблицы и возвращает данные из другого столбца.</p>
-        <pre><code class="language-text">= ВПР(искомое_значение; таблица; номер_столбца; 0)</code></pre>
+        <pre><code class="language-text" data-i18n="l2.t5.code1">= ВПР(искомое_значение; таблица; номер_столбца; 0)</code></pre>
         <table style="margin-top:16px">
           <tr>
             <th data-i18n="l2.t5.tbl.hd1">Аргумент</th>
@@ -281,21 +281,21 @@
 
       <section>
         <h3 data-i18n="l2.t5.ex.h3">Пример ВПР</h3>
-        <pre><code class="language-text">Справочник A:B
+        <pre><code class="language-text" data-i18n="l2.t5.ex.code">Справочник A:B
 101 | Ноутбук
 102 | Мышь
 103 | Клавиатура
 
 Формула — найти название по коду из D2:
 = ВПР(D2; $A$1:$B$5; 2; 0)
-         ↑            ↑
+         ↑                 ↑
     что ищем      возвращаем 2-й столбец</code></pre>
         <div class="warn" data-i18n-html="l2.t5.warn">⚠️ ВПР ищет только в <strong>первом</strong> столбце диапазона и возвращает только вправо.</div>
       </section>
 
       <section>
         <h3 data-i18n="l2.t5.xl.h3">XLOOKUP — современная замена ВПР</h3>
-        <pre><code class="language-text">= XLOOKUP(что_ищем; диапазон_поиска; диапазон_результата; "Не найдено")</code></pre>
+        <pre><code class="language-text" data-i18n="l2.t5.xl.code">= XLOOKUP(что_ищем; диапазон_поиска; диапазон_результата; "Не найдено")</code></pre>
         <table>
           <tr><th></th><th data-i18n="l2.t5.xl.hd2">ВПР</th><th data-i18n="l2.t5.xl.hd3">XLOOKUP</th></tr>
           <tr>
@@ -310,7 +310,7 @@
           </tr>
           <tr>
             <td data-i18n="l2.t5.xl.r3c1">Если не найдено</td>
-            <td>#Н/Д</td>
+            <td data-i18n="l2.t5.xl.r3c2">#Н/Д</td>
             <td data-i18n="l2.t5.xl.r3c3">Свой текст</td>
           </tr>
         </table>
@@ -339,7 +339,7 @@
         <tr>
           <td data-i18n-html="l2.t6.tbl.r3c1"><code>#ДЕЛ/0!</code></td>
           <td data-i18n="l2.t6.tbl.r3c2">Деление на ноль</td>
-          <td>=ЕСЛИ(B2=0; 0; A2/B2)</td>
+          <td data-i18n="l2.t6.tbl.r3c3">=ЕСЛИ(B2=0; 0; A2/B2)</td>
         </tr>
         <tr>
           <td data-i18n-html="l2.t6.tbl.r4c1"><code>#ИМЯ?</code></td>
@@ -347,8 +347,8 @@
           <td data-i18n="l2.t6.tbl.r4c3">Проверить написание</td>
         </tr>
       </table>
-      <div class="tip" style="margin-top:20px">
-        <span data-i18n-html="l2.t6.tip">💡 <strong>ЕСЛИОШИБКА</strong> — обёртка для любой ошибки:</span><br>
+      <div class="tip" style="margin-top:20px" data-i18n-html="l2.t6.tip.html">
+        💡 <strong>ЕСЛИОШИБКА</strong> — обёртка для любой ошибки:<br>
         <code>=ЕСЛИОШИБКА(ВПР(D2; $A:$B; 2; 0); "Не найдено")</code>
       </div>
     </section>
@@ -358,13 +358,13 @@
       <section>
         <h2 data-i18n="l2.t7.h2">Тема 7: Данные между листами и файлами</h2>
         <h3 data-i18n="l2.t7.h3a">Ссылка на другой лист</h3>
-        <pre><code class="language-text">= Лист2!A1                // значение с другого листа
+        <pre><code class="language-text" data-i18n="l2.t7.sheet.code">= Лист2!A1                // значение с другого листа
 = СУММ(Лист2!A1:A10)      // формула с другого листа
 = 'Данные продаж'!B5      // если в названии есть пробел</code></pre>
       </section>
       <section>
         <h3 data-i18n="l2.t7.h3b">Ссылка на другой файл — IMPORTRANGE</h3>
-        <pre><code class="language-text">= IMPORTRANGE("https://docs.google.com/spreadsheets/d/XXX";
+        <pre><code class="language-text" data-i18n="l2.t7.imp.code">= IMPORTRANGE("https://docs.google.com/spreadsheets/d/XXX";
               "Лист1!A:D")</code></pre>
         <div class="tip" data-i18n-html="l2.t7.imp.tip">
           💡 IMPORTRANGE создаёт <strong>живую ссылку</strong> — данные обновляются автоматически.<br>
